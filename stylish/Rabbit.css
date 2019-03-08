@@ -1,0 +1,20 @@
+@-moz-document domain("15below-rabmq01.15below.inetu"),
+		       domain("15below-rabmq02.15below.inetu"),
+		       domain("15below-rabmq03.15below.inetu"),
+		       domain("15below-rabmq04.15below.inetu"),
+		       domain("15below-rabmq05.15below.inetu"),
+		       domain("15below-rabmq06.15below.inetu"),
+		       domain("15below-rabmq07.15below.inetu"),
+		       domain("15below-rabmq08.15below.inetu"),
+		       domain("15below-rabmq09.15below.inetu"),
+		       domain("15below-rabmq10.15below.inetu"),
+		       domain("15below-rabmq11.15below.inetu"),
+		       domain("15below-rabmq12.15below.inetu"),
+		       domain("15below-rabmq13.15below.inetu"),
+		       domain("15below-rabmq14.15below.inetu")
+{
+	table th, table td
+	{
+		font: 11px/11px "Segoe UI"
+	}
+}

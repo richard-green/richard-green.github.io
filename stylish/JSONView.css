@@ -1,0 +1,10 @@
+div#json
+{
+  font-family: Consolas;
+  font-size: 10pt;
+}
+
+div#json .prop
+{
+  font-weight: normal;
+}

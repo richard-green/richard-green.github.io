@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+        <title>JavaScript Tools - Hashing &amp; Codecs</title>
+        <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
+        <script type="text/javascript" src="../js/base64.min.js"></script>
+        <script type="text/javascript" src="../js/Hex.js"></script>
+        <script type="text/javascript" src="../js/MD5.js"></script>
+        <script type="text/javascript" src="../js/SHA256.js"></script>
+        <script type="text/javascript" src="../js/UTF-8.js"></script>
+        <script type="text/javascript" src="../js/LZW.js"></script>
+        <script type="text/javascript">
+            <!--
+
+            var operation = "MD5";
+
+            function actionLTR()
+            {
+				var txtFrom = document.getElementById("txtFrom");
+				var txtTo = document.getElementById("txtTo");
+
+				switch(operation)
+				{
+					case "MD5":
+						txtTo.value = hex_md5(txtFrom.value);
+						break;
+					case "SHA256":
+						txtTo.value = sha256_digest(txtFrom.value);
+						break;
+					case "Base64":
+						txtTo.value = Base64.encode(txtFrom.value);
+						break;
+					case "ASCIIToHex":
+						txtTo.value = convertAsciiToHex(txtFrom.value);
+						break;
+					case "HexToBinary":
+						txtTo.value = hexToBin(txtFrom.value);
+						break;
+					case "UriEncoding":
+						txtTo.value = encodeURI(txtFrom.value);
+						break;
+					case "Utf8ToASCII":
+						txtTo.value = UTF8.encode(txtFrom.value);
+						break;
+					case "LZW":
+						txtTo.value = lzw_encode(txtFrom.value);
+						break;
+				}
+			}
+
+			function actionRTL()
+			{
+				var txtFrom = document.getElementById("txtFrom");
+				var txtTo = document.getElementById("txtTo");
+
+				switch(operation)
+				{
+					case "MD5":
+						txtFrom.value = "I'm not a miracle worker!";
+						break;
+					case "SHA256":
+						txtFrom.value = "Not likely, pal!";
+						break;
+					case "Base64":
+						var strings = txtTo.value.split("\n");
+						var results = [];
+						for (var i in strings)
+						{
+							results.push(Base64.decode(strings[i]));
+						}
+						txtFrom.value = results.join("\n");
+						break;
+					case "ASCIIToHex":
+						txtFrom.value = convertHexToAscii(txtTo.value);
+						break;
+					case "HexToBinary":
+						txtFrom.value = binToHex(txtTo.value);
+						break;
+					case "UriEncoding":
+						txtFrom.value = decodeURI(txtTo.value);
+						break;
+					case "Utf8ToASCII":
+						txtFrom.value = UTF8.decode(txtTo.value);
+						break;
+					case "LZW":
+						txtFrom.value = lzw_decode(txtTo.value);
+						break;
+				}
+			}
+
+			function setOperation(op)
+			{
+				switch(op)
+				{
+					case "MD5":
+					case "SHA256":
+						document.getElementById("btnRTL").disabled = true;
+						break;
+					case "Base64":
+					case "ASCIIToHex":
+					case "HexToBinary":
+					case "UriEncoding":
+					case "Utf8ToASCII":
+					case "LZW":
+						document.getElementById("btnRTL").disabled = false;
+						break;
+				}
+				operation = op;
+			}
+
+            function bitCalcNOT()
+            {
+                var hex_calcs_input1 = document.getElementById("hex_calcs_input1");
+                var hex_calcs_output = document.getElementById("hex_calcs_output");
+                hex_calcs_output.value = hexCalcNOT(hex_calcs_input1.value);
+            }
+
+            function bitCalcOR()
+            {
+                var hex_calcs_input1 = document.getElementById("hex_calcs_input1");
+                var hex_calcs_input2 = document.getElementById("hex_calcs_input2");
+                var hex_calcs_output = document.getElementById("hex_calcs_output");
+                hex_calcs_output.value = hexCalcOR(hex_calcs_input1.value, hex_calcs_input2.value);
+            }
+
+            function bitCalcAND()
+            {
+                var hex_calcs_input1 = document.getElementById("hex_calcs_input1");
+                var hex_calcs_input2 = document.getElementById("hex_calcs_input2");
+                var hex_calcs_output = document.getElementById("hex_calcs_output");
+                hex_calcs_output.value = hexCalcAND(hex_calcs_input1.value, hex_calcs_input2.value);
+            }
+
+            function bitCalcXOR()
+            {
+                var hex_calcs_input1 = document.getElementById("hex_calcs_input1");
+                var hex_calcs_input2 = document.getElementById("hex_calcs_input2");
+                var hex_calcs_output = document.getElementById("hex_calcs_output");
+                hex_calcs_output.value = hexCalcXOR(hex_calcs_input1.value, hex_calcs_input2.value);
+            }
+            -->
+        </script>
+        <style type='text/css'>
+            <!--
+            pre
+            {
+                display: inline;
+                font-size: 1.2em;
+            }
+            label pre
+            {
+				font-size: 1.2em;
+			}
+            input.button
+            {
+                width: 60px;
+            }
+            input.text
+            {
+                font-family: courier new;
+                font-size: 1.4em;
+                margin-bottom: 2px;
+            }
+            #txtFrom
+            {
+				height: 180px;
+				width: 45%;
+				float: left;
+			}
+            #txtTo
+            {
+				height: 180px;
+				width: 45%;
+				float: right;
+			}
+			#lblFrom
+			{
+				float: left;
+				font-weight: bold;
+				font-size: 1.4em;
+				margin-bottom: 5px;
+			}
+			#lblTo
+			{
+				font-weight: bold;
+				font-size: 1.4em;
+				margin-bottom: 5px;
+				float: right;
+			}
+			label
+			{
+				font-size: 1.2em;
+				margin-top: -4px;
+				margin-bottom: 4px;
+			}
+			#divActionButtons
+			{
+				float: left;
+				text-align: center;
+				width: 8%;
+				margin-top: 70px;
+			}
+			.lbl-sm
+			{
+				width: 120px;
+			}
+            -->
+        </style>
+    </head>
+
+    <body>
+
+        <div id='Layer0'>
+            <div id='Layer1'>
+                <div id='Layer2'>
+                    <div id='Layer3'>
+                        <div id='Layer4'>
+
+                            <h1><a href='../'><img src='../styles/rdgreen.dev/rich@rdgreen.dev.png' alt='rich&#64;rdgreen.dev' title='rich&#64;rdgreen.dev' /></a></h1>
+
+							<form onsubmit="return false;" action="codecs">
+
+								<h2><a href='./'>JavaScript Tools</a> - Hashing &amp; Codecs</h2>
+
+								<div class='box' style='margin-bottom: 2em'>
+									<h3>Select operation:</h3>
+									<input type='radio' id='rdoMD5' value='MD5' name='rdoOperation' onclick="setOperation('MD5');" checked="checked" /><label for='rdoMD5'>MD5</label><br />
+									<input type='radio' id='rdoSHA256' value='SHA256' name='rdoOperation' onclick="setOperation('SHA256');" /><label for='rdoSHA256'>SHA256</label><br />
+									<input type='radio' id='rdoBase64' value='Base64' name='rdoOperation' onclick="setOperation('Base64');" /><label for='rdoBase64'>Base 64</label><br />
+									<input type='radio' id='rdoASCIIToHex' value='ASCIIToHex' name='rdoOperation' onclick="setOperation('ASCIIToHex');" /><label for='rdoASCIIToHex'>ASCII to Hex</label><br />
+									<input type='radio' id='rdoHexToBinary' value='HexToBinary' name='rdoOperation' onclick="setOperation('HexToBinary');" /><label for='rdoHexToBinary'>Hex to Binary</label><br />
+									<input type='radio' id='rdoUriEncoding' value='UriEncoding' name='rdoOperation' onclick="setOperation('UriEncoding');" /><label for='rdoUriEncoding'>URI Encoding</label><br />
+									<input type='radio' id='rdoLZW' value='LZW' name='rdoOperation' onclick="setOperation('LZW');" /><label for='rdoLZW'>LZW Compression</label><br />
+								</div>
+
+								<div class='box'>
+									<label for='txtFrom' id='lblFrom'>Input</label>
+									<label for='txtTo' id='lblTo'>Output</label>
+								</div>
+
+								<div class='box'>
+									<textarea id='txtFrom' rows='8' cols='40' style='resize: vertical;'></textarea>
+									<div class='box' id='divActionButtons'>
+										<button id="btnLTR" onclick="actionLTR();">&gt;&gt;</button><br/>
+										<button id="btnRTL" onclick="actionRTL();" disabled="disabled">&lt;&lt;</button>
+									</div>
+									<textarea id='txtTo' rows='8' cols='40' style='resize: vertical;'></textarea>
+								</div>
+
+                            </form>
+
+                            <h3>Bitwise Hex Calculations</h3>
+
+                            <label for='hex_calcs_input1' class='lbl-sm'>Input 1: </label><input type='text' class='text' id='hex_calcs_input1' size='32' value='' /><br />
+                            <label for='hex_calcs_input2' class='lbl-sm'>Input 2: </label><input type='text' class='text' id='hex_calcs_input2' size='32' value='' /><br />
+                            <label for='hex_calcs_output' class='lbl-sm'>Output:  </label><input type='text' class='text' id='hex_calcs_output' size='32' value='' /><br />
+                            <br />
+                            <input type='button' class='button' onclick='bitCalcNOT();' value='NOT' />
+                            <input type='button' class='button' onclick='bitCalcOR();' value='OR' />
+                            <input type='button' class='button' onclick='bitCalcAND();' value='AND' />
+                            <input type='button' class='button' onclick='bitCalcXOR();' value='XOR' />
+
+                        </div>
+
+                        <div id='Footer0'>
+                            <div id='Footer1'>
+                                <div id='Footer2'>
+
+                                    <hr />
+
+                                    <p>
+
+                                        Copyright &copy; <script>document.write(new Date().getFullYear())</script> Richard Green.
+                                        <br />
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <script type="text/javascript" src="../js/Debug.js"></script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+
+</html>

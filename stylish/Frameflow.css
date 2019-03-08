@@ -1,0 +1,51 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("monitoring.pasngr.com")
+{
+    body {
+        font-family: "Segoe UI" !important;
+    }
+
+    #urls {
+        width: 1000px !important;
+        height: 200px !important;
+    }
+
+    #service-list {
+        width: 1000px !important;
+        height: 400px !important;
+    }
+
+    #monitorDevices {
+      width: 900px !important;
+    }
+
+    .structSplitter {
+        background-color: #4c93c4 !important;
+    }
+
+    .sectionTitle {
+        color: #4c93c4 !important;
+        font-size: 12pt !important;
+    }
+
+    .dynatree-title {
+        font-size: 10pt !important;
+        margin: 0px !important;
+        padding: 2px 4px !important;
+    }
+
+    .dynatree-node img {
+        padding: 4px 2px 2px 3px !important;
+    }
+
+    .ffTreeCritical,
+    .ffTreeFailure {
+        margin: 4px 0 0 3px !important;
+    }
+
+    .ffEvents tr td img {
+        margin-bottom: -3px;
+        margin-right: 3px;
+    }
+}

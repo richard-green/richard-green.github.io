@@ -1,0 +1,31 @@
+@-moz-document domain("dev-identity.15below.local"),
+    	       domain("qat-identity.15below.travel"),
+               domain("identity.15below.travel")
+{
+	
+    *
+    {
+        font-family: "Segoe UI"
+    }
+
+    h1, h2, h3, h4, h5
+    {
+        font-weight: normal;
+    }
+
+    .btn, .form-control
+    {
+        border-radius: 0 !important;
+        border-width: 1px;
+    }
+
+    .form-control
+    {
+        border-width: 1px !important;
+    }
+
+    .form-control:focus
+    {
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,1 @@
+jsoncallback({key: "value"});

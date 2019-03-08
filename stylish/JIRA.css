@@ -1,0 +1,49 @@
+@-moz-document domain("15below.atlassian.net") {
+    
+    * {
+        font-family:       "Segoe UI", Tahoma         !important;
+        font-size: 10pt;
+    }
+
+    #title-text a {
+        font-size: 20pt;
+    }
+
+    h1, h2, h3, h4, h5,
+    .wiki-content h1, .wiki-content h2, .wiki-content h3, .wiki-content h4, .wiki-content h5 {
+        font-weight: normal;
+    }
+
+    .wiki-content h4, .wiki-content h5 {
+        text-decoration: underline
+    }
+
+    .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-yellow {
+        background-color: #ffd351 !important;
+        border-color: #ffd351 !important;
+        color: #594300 !important;
+      }
+      .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-green {
+        background-color: #14892c !important;
+        border-color: #14892c !important;
+        color: #fff !important;
+      }
+
+    #inline-dialog-selection-action-panel {
+        display: none;
+        visibility: hidden;
+    }
+    
+    .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-yellow {
+        background-color: #ffd351 !important;
+        border-color: #ffd351 !important;
+        color: #594300 !important;
+    }
+    
+    .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-green {
+        background-color: #14892c !important;
+        border-color: #14892c !important;
+        color: #fff !important;
+    }
+
+}

@@ -1,0 +1,328 @@
+@-moz-document domain("google.com"), domain("google.co.uk"), domain("blogspot.com"), domain("youtube.com"), domain("mail.google.com") {
+body, td, textarea, select, legend, button, option, div.s, font,
+	.goog-menu, .goog-menu-vertical, .presently-menu, .goog-toolbar-menu-button, .modal-dialog-title-text, .menubar-item, .writely-menubar-item,  .goog-inline-block,
+	.modelinkOff, .manager-page body, .manager-page td, .manager-page div, a, .gb1, .feedmodule-titleText, .SUicbd, .AO, .AQ, .nJ, .pw, .AP,
+	.krEW7c, .MgLW8b,
+	.ax, .ar, .ha, .yS, .J-Zh-I, .J-N-Jz, .VP5otc-MdoD9, .VP5otc-tOAp0c, .Mh, .RS, .RG, .goog-offlinestatus-installed, .goog-offlinestatus-notinstalled, .goog-tree-item-label,
+	.event-title, .date-content, .eb-root, #dateunderlay
+	{
+		font-family:       "Segoe UI", Tahoma         !important;
+	}
+
+	/* labels in email list and each email */
+	.krEW7c, .MgLW8b {
+		font-size: 8pt;
+		margin-top: -1px !important;
+	}
+
+	/* RG Extensions */
+
+	.xY
+	{
+		font-size: 75% !important;
+	}
+
+	.month-row .st-bg-table td:nth-child(1),
+	.month-row .st-bg-table td:nth-child(7)
+	{
+		background-color: #f5f5f5;
+	}
+
+	.st-dtitle-today
+	{
+		color: #D14836 !important;
+		font-weight: bold;
+	}
+
+	.yO, .zE
+	{
+		border-bottom: 1px solid #eee !important;
+	}
+
+	.T-Jo
+	{
+		top: -1px !important;
+		left: 3px !important;
+	}
+
+	td.apU .T-KT
+	{
+		top: 2px !important;
+	}
+
+	/* Table row */
+	.zA .xY
+	{
+		border-bottom: none !important;
+		background-color: #fff !important;
+		padding-top: 5px !important;
+		padding-bottom: 1px !important;
+		vertical-align: top !important;
+	}
+
+	/* Selected row */
+	.zA.x7 .xY
+	{
+		background-color: #FFFFCC !important;
+	}
+
+	/* Highlighted row */
+	.zA.aqw .xY
+	{
+		background-color: #f8f8f8 !important;
+	}
+
+	.MsoNormal
+	{
+		margin: 1em 0 !important;
+	}
+
+	.Bs .Bu:nth-child(2),
+	.Bs .Bu:nth-child(3)
+	{
+		display: none;
+	}
+
+	.AY
+	{
+		background-color: #e8f1ff !important;
+		border-top: 0;
+	}
+
+	.A1
+	{
+		background-color: #e8f1ff !important;
+		border-bottom: 0;
+	}
+
+	.n0
+	{
+		font-weight: normal !important;
+		text-decoration: none !important;
+	}
+
+	.n1 .n0
+	{
+		text-decoration: underline !important;
+	}
+
+	.mn
+	{
+		display: none;
+	}
+
+	.oZ-jd
+	{
+		display: none;
+	}
+
+	input.oZ-jc
+	{
+		margin-top: -4px !important;
+		margin-left: 13px !important;
+	}
+
+	.qRauBc
+	{
+		border-top: 0 !important;
+	}
+
+	*:focus
+	{
+		outline: none !important;
+	}
+
+	.yO, .zE { border-bottom: 0 !important; }
+
+	.zA .xY { padding-top: 5px !important; padding-bottom: 3px !important; }
+
+	/* Space between tabs and emails */
+	.aKh { height: 51px }
+
+	@media screen and (max-width: 800px)
+	{
+		.aKh { height: 37px }
+	}
+		
+	.aIf-aLe .aDG,
+	.aAy.J-KU-JW.aAy.aIf-aLe .aKo,
+	.aAy.J-KU-KO.aAy.aIf-aLe .aKo
+	{
+		background-color: #dd4b39;
+	}
+
+	.T-I
+	{
+		border-radius: 0;
+	}
+		
+	.aim
+	{
+		margin-bottom: 5px;
+	}
+
+	/* Compose button */
+
+	.z0 .T-I
+	{
+		margin-top: 10px;
+		min-width: 120px;
+		min-height: 30px;
+	}
+
+		.aKj.jOWHyd
+		{
+			width: 28px;
+		}
+		
+		.aRw
+		{
+			margin-left: 10px;
+		}
+		
+	.aAy,
+	.aKj.jOWHyd,
+	.TI .T-I-ax7,
+	.z0 .T-I-ax7,
+	.G-atb .T-I-ax7,
+	.J-KU-Jg-K9.aAA .aKi,
+	.UI,
+	.G-atb,
+	.qp
+	{
+		border-color: #e4e4e4 !important;
+	}
+	.gb_Ce::before
+	{
+		background-color: #e4e4e4;
+	}
+		
+	.aAy.J-KU-KO
+	{
+		border-bottom-color: #fff !important;
+	}
+
+	.UI
+	{
+		min-height: 650px;
+		border-left: 1px solid;
+		border-right: 1px solid;
+		border-bottom: 1px solid;
+	}
+
+	.l2
+	{
+		padding-bottom: 40px;
+	}
+
+	/* Adverts */
+	.Zs, .aKB
+	{
+		display: none !important;
+	}
+
+	/* Settings */
+
+	.r4,
+	.alO
+	{
+		background-color: #fff;
+	}
+    
+    /* Card styling */
+    
+    .nH,
+    .aeJ,
+    .iY .Bu
+    {
+        background-color: #fafafa;
+    }
+    
+    .adn
+    {
+        margin: 0 0 14px 0;
+        background-color: #fff;
+        padding: 0 7px;
+        border: 1px solid #e4e4e4;
+        box-shadow: 1px 1px 2px 0 rgba(0,0,0,.1);
+    }
+    
+    .UI
+    {
+        background-color: #ffffff;
+        box-shadow: 1px 1px 3px 0 rgba(0,0,0,.1);
+    }
+    
+    /* Email styles */
+    
+    .hP
+    {
+        font-size: 1.2em;
+    }
+    
+    .aju
+    {
+        padding-top: 7px;
+    }
+    
+    .h9
+    {
+        background-color: #ffe;
+        margin-left: -44px;
+    }
+    
+    .hx .ie .xu .iq
+    {
+        border-top: none;
+    }
+    
+    .hx .iq, .M9
+    {
+        margin-right: 0;
+    }
+    
+    .Bk .G2,
+    .hx .h7 .ac5 .gB,
+    .hx .h7 .acO
+    {
+        border-top: 0;
+    }
+    
+    .nH.aBp
+    {
+        background-color: transparent;
+    }
+}
+
+@-moz-document domain("calendar.google.com") {
+#mainbody
+	{
+		margin-left: 204px !important;
+	}
+
+	#topLeftNavigation
+	{
+		left: 204px !important;
+	}
+
+	.tg-weekend {
+		background-color: #f1f1f1;
+	}
+
+	.tg-today {
+		background-color: #ccffdd;
+	}
+
+	.tg-dualmarker {
+		border-bottom: 1px dashed #d3d3d3;
+		border-top: 1px solid #d3d3d3;
+	}
+}
+
+@-moz-document domain("plus.google.com") {
+.Up3k2d
+	{
+		font-weight: normal;
+		font-size: 19px;
+	}
+}

@@ -1,0 +1,207 @@
+/*======================================================================== GENERAL STYLES */
+
+html, body
+{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body
+{
+    font-family: tahoma, verdana, arial, sans-serif;
+    font-size: 62.5%;
+    background: url(rdgreen.dev/backshade.png) top left repeat-x;
+}
+
+p
+{
+    font-size: 1.2em;
+    line-height: 1.5em;
+    margin: 2em 0;
+}
+
+a
+{
+    color: #1F7CA6;
+}
+
+a img
+{
+    border: 0;
+}
+
+h1
+{
+    margin: 0;
+}
+
+h1 a
+{
+    border: 0;
+}
+
+h1 span
+{
+    font-size: 1px;
+    text-decoration: none;
+}
+
+h2
+{
+    font-size: 1.8em;
+    border-bottom: 1px solid #1F7CA6;
+    margin: 2em 0;
+}
+
+h2 a
+{
+    text-decoration: none;
+}
+
+h3
+{
+	font-size: 1.4em;
+	margin: 2em 0 1.5em 0;
+}
+
+ul, dl, ol
+{
+	margin: 2em;
+	padding: 0;
+}
+
+li
+{
+	margin-left: 1em;
+	font-size: 1.2em;
+	list-style-color: #1F7CA6;
+}
+
+dt
+{
+	margin-left: 1em;
+	font-size: 1em;
+	list-style-color: #1F7CA6;
+	margin-bottom: 0.6em;
+}
+
+dd
+{
+	font-size: 1em;
+	margin-bottom: 1.4em;
+}
+
+/*========================================================================= LAYOUT STYLES */
+
+#Layer0
+{
+    margin: 0 auto;
+    width: 1000px;
+    background: #ececec url(rdgreen.dev/topinnershade.png) top left repeat-x;
+}
+
+#Layer1
+{
+    background: url(rdgreen.dev/leftsideshade.png) top left repeat-y;
+}
+
+#Layer2
+{
+    background: url(rdgreen.dev/rightsideshade.png) top right repeat-y;
+}
+
+#Layer3
+{
+    background: url(rdgreen.dev/topleftcurve.png) top left no-repeat;
+}
+
+#Layer4
+{
+    padding: 0 40px;
+    background: url(rdgreen.dev/toprightcurve.png) top right no-repeat;
+}
+
+#Footer0
+{
+    margin-top: 60px;
+    clear: both;
+    background: #ececec url(rdgreen.dev/bottominnershade.png) top left repeat-x;
+}
+
+#Footer1
+{
+    background: url(rdgreen.dev/bottomleftside.png) top left no-repeat;
+}
+
+#Footer2
+{
+    height: 92px;
+    background: url(rdgreen.dev/bottomrightside.png) top right no-repeat;
+}
+
+#Footer2 p
+{
+    border-top: 1px solid #1F7CA6;
+    margin: 0 40px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+#Footer2 hr
+{
+    visibility: hidden;
+}
+
+#Footer2 img
+{
+    vertical-align: middle;
+}
+
+#frameData
+{
+    background-color: black;
+    color: #0f0;
+    height: 300px;
+    width: 600px;
+    margin: 3em auto;
+    padding: 3px;
+}
+
+#facebook
+{
+    float: right;
+    margin-top: 10px;
+}
+
+.narrow
+{
+	margin: 0 64px;
+}
+
+a.bookmarklet
+{
+	border: 1px solid silver;
+	padding: 5px;
+	background-color: #fff;
+	color: #000;
+}
+
+
+/*========================================================================= CLEARFIX */
+
+.box:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.box {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .box {height: 1%;}
+.box {display: block;}
+/* End hide from IE-mac */
+

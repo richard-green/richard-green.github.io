@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JSON Formatter</title>
+		<link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
+		<script type='text/javascript' src='/js/Debug.js'></script>
+		<script type='text/javascript' src='/js/jsonHighlight.js'></script>
+		<script type='text/javascript'>
+			function formatNow(json_in, json_out) {
+				var error = document.getElementById('error');
+				json_in = document.getElementById(json_in);
+				json_out = document.getElementById(json_out);
+				try {
+					json_out.innerHTML = jsonHighlight.highlight(JSON.parse(json_in.value));
+					error.innerHTML = "";
+				}
+				catch (ex) {
+					error.innerHTML = ex;
+				}
+			}
+
+    function copyJson() {
+        var text = document.getElementById("json_out").textContent;
+        var input = document.createElement('textarea');
+        document.body.appendChild(input);
+        input.value = text;
+        input.focus();
+        input.select();
+        document.execCommand('Copy');
+        input.remove();
+    }
+
+		</script>
+		<style type='text/css'>
+			#json_in, #json_out { font-size: 11pt; font-family: Consolas, Monospace; width: 910px; padding: 5px;  min-height: 200px }
+			#json_in { border: none; }
+			#json_out { overflow: auto; background-color: #fff; }
+			#json_out .key { color: #00f; }
+			#json_out .string { color: #080; }
+			#json_out .boolean { color: #f00; }
+			#json_out .null { color: #aaa; }
+			#error { color: #f00; }
+		</style>
+	</head>
+
+    <body>
+
+        <div id='Layer0'>
+            <div id='Layer1'>
+                <div id='Layer2'>
+                    <div id='Layer3'>
+                        <div id='Layer4'>
+
+				<h1><a href='../'><img src='../styles/rdgreen.dev/rich@rdgreen.dev.png' alt='rich&#64;rdgreen.dev' title='rich&#64;rdgreen.dev' /></a></h1>
+
+				<h2><a href='./'>JavaScript Tools</a> - JSON Formatter</h2>
+
+				<h3>Input</h3>
+				<p>
+					<textarea id="json_in" onkeyup="formatNow('json_in', 'json_out')" cols="100" rows="10" style='resize: vertical;'></textarea>
+				</p>
+
+				<p id='error'></p>
+
+				<h3>Output - <button onclick="copyJson()">Copy</button></h3>
+
+				<p>
+					<pre id="json_out"></pre>
+				</p>
+
+                        </div>
+
+                        <div id='Footer0'>
+                            <div id='Footer1'>
+                                <div id='Footer2'>
+
+                                    <hr />
+
+                                    <p>
+
+                                        Copyright &copy; <script>document.write(new Date().getFullYear())</script> Richard Green.
+                                        <br />
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+
+</html>
