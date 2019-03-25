@@ -4,14 +4,15 @@ body, td, textarea, select, legend, button, option, div.s, font,
 	.modelinkOff, .manager-page body, .manager-page td, .manager-page div, a, .gb1, .feedmodule-titleText, .SUicbd, .AO, .AQ, .nJ, .pw, .AP,
 	.krEW7c, .MgLW8b,
 	.ax, .ar, .ha, .yS, .J-Zh-I, .J-N-Jz, .VP5otc-MdoD9, .VP5otc-tOAp0c, .Mh, .RS, .RG, .goog-offlinestatus-installed, .goog-offlinestatus-notinstalled, .goog-tree-item-label,
-	.event-title, .date-content, .eb-root, #dateunderlay
+	.event-title, .date-content, .eb-root, #dateunderlay, .yW, .aKx>.aKz, .ha>.hP
 	{
 		font-family:       "Segoe UI", Tahoma         !important;
 	}
 
 	/* labels in email list and each email */
-	.krEW7c, .MgLW8b {
-		font-size: 8pt;
+	.krEW7c, .MgLW8b
+    {
+		font-size: 9pt;
 		margin-top: -1px !important;
 	}
 
@@ -21,6 +22,22 @@ body, td, textarea, select, legend, button, option, div.s, font,
 	{
 		font-size: 75% !important;
 	}
+
+    .Tm::-webkit-scrollbar
+    {
+        width: 20px;
+    }
+
+    /* Selected Inbox side tab */
+    .wT>.n3 .byl:first-child .aim:first-child .nZ
+    {
+        background-color: #dbdbdb;
+    }
+
+    .yW
+    {
+        font-size: inherit;
+    }
 
 	.month-row .st-bg-table td:nth-child(1),
 	.month-row .st-bg-table td:nth-child(7)
@@ -37,6 +54,7 @@ body, td, textarea, select, legend, button, option, div.s, font,
 	.yO, .zE
 	{
 		border-bottom: 1px solid #eee !important;
+        background: transparent;
 	}
 
 	.T-Jo
@@ -47,30 +65,54 @@ body, td, textarea, select, legend, button, option, div.s, font,
 
 	td.apU .T-KT
 	{
-		top: 2px !important;
+		top: -1px !important;
 	}
 
-	/* Table row */
+    /* Top Tabs */
+
+    .J-KU-KO.aAy:before
+    {
+        margin: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+
+	/* Table row
 	.zA .xY
 	{
 		border-bottom: none !important;
 		background-color: #fff !important;
-		padding-top: 5px !important;
+		padding-top: 10px !important;
 		padding-bottom: 1px !important;
 		vertical-align: top !important;
 	}
+    */
 
 	/* Selected row */
 	.zA.x7 .xY
 	{
-		background-color: #FFFFCC !important;
+		background-color: transparent !important;
+	}
+	.zA.x7
+	{
+		background-color: rgba(255, 221, 0, .07) !important;
 	}
 
 	/* Highlighted row */
 	.zA.aqw .xY
 	{
-		background-color: #f8f8f8 !important;
-	}
+		background-color: transparent !important;
+    }
+	.zA.aqw
+	{
+		background-color: rgba(116, 210, 48, .07) !important;
+    }
+
+    td.oZ-x3::before
+    {
+        background-position: 0px 4px;
+    }
 
 	.MsoNormal
 	{
@@ -163,6 +205,7 @@ body, td, textarea, select, legend, button, option, div.s, font,
 
 	/* Compose button */
 
+    /* -- NEW GOOGLE
 	.z0 .T-I
 	{
 		margin-top: 10px;
@@ -201,13 +244,16 @@ body, td, textarea, select, legend, button, option, div.s, font,
 	{
 		border-bottom-color: #fff !important;
 	}
+    */
 
 	.UI
 	{
 		min-height: 650px;
+        /* -- NEW GOOGLE
 		border-left: 1px solid;
 		border-right: 1px solid;
 		border-bottom: 1px solid;
+        */
 	}
 
 	.l2
@@ -237,20 +283,68 @@ body, td, textarea, select, legend, button, option, div.s, font,
     {
         background-color: #fafafa;
     }
-    
+
+    /* Compose window title */
+
+    .AD .nH
+    {
+        background-color: #D14836 !important;
+    }
+
+/* Read Email Pane */
+.G3.G2 > div > div {
+    padding: 10px 1px;
+}
+
+/* Email title */
+.if>.byY, .iC .byY
+{
+    padding-left: 20px;
+}
+
+/* Reply buttons */
+.amr>.wR.nr
+{
+    background-color: transparent;
+}
+.amn>.ams
+{
+    background-color: white;
+}
+.I5.bzE
+{
+        box-shadow: 0px 1px 3px 0 rgba(0,255,0,0.1);
+}
+/*
+
+.HM .aDg>.aDj.aDi
+{
+    bottom: 35px;
+}
+*/
+.I5, .HM .aDj, .aDj .aDi .aDh .IZ .btC
+{
+    border-radius: 0 !important;
+}
+.HM .aDi::after, .aDj>.aC3, .HM .aDi::before
+{
+    background-color: #fafafa
+}
+
+
     .adn
     {
         margin: 0 0 14px 0;
         background-color: #fff;
         padding: 0 7px;
         border: 1px solid #e4e4e4;
-        box-shadow: 1px 1px 2px 0 rgba(0,0,0,.1);
+        box-shadow: 0px 1px 3px 0 rgba(0,0,0,0.1);
     }
     
     .UI
     {
         background-color: #ffffff;
-        box-shadow: 1px 1px 3px 0 rgba(0,0,0,.1);
+        box-shadow: 0px 1px 3px 0 rgba(0,0,0,0.1);
     }
     
     /* Email styles */
