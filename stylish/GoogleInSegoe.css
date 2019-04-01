@@ -96,17 +96,17 @@ body, td, textarea, select, legend, button, option, div.s, font,
 	}
 	.zA.x7
 	{
-		background-color: rgba(255, 221, 0, .07) !important;
+		background-color: rgba(255, 231, 72, .16) !important;
 	}
 
-	/* Highlighted row */
+	/* Hover row */
 	.zA.aqw .xY
 	{
 		background-color: transparent !important;
     }
 	.zA.aqw
 	{
-		background-color: rgba(116, 210, 48, .07) !important;
+		background-color: rgba(198, 198, 198, .27) !important;
     }
 
     td.oZ-x3::before
@@ -361,8 +361,9 @@ body, td, textarea, select, legend, button, option, div.s, font,
     
     .h9
     {
-        background-color: #ffe;
-        margin-left: -44px;
+        background-color: rgba(255, 231, 72, .16);
+        margin: 24px 16px 24px -48px;
+        padding: 8px 12px;
     }
     
     .hx .ie .xu .iq
