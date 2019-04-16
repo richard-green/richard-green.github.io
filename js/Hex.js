@@ -9,7 +9,6 @@ function binToHex(bin)
 	{
 		sOut += decToHex(parseInt(bin.substr(i,4),2));
 	}
-	//Debug("binToHex(\"" + bin + "\") = \"" + sOut + "\"");
 	return sOut;
 }
 
@@ -24,7 +23,6 @@ function hexToBin(hex)
 	{
 		sOut += decToBin(parseInt(hex.substr(i,1),16));
 	}
-	//Debug("hexToBin(\"" + hex + "\") = \"" + sOut + "\"");
 	return sOut;
 }
 
@@ -44,7 +42,6 @@ function decToBin(dec)
 	{
 		sOut = "0000";
 	}
-	//Debug("decToBin(" + dec + ") = \"" + sOut + "\"");
 	return sOut;
 }
 
@@ -64,7 +61,6 @@ function decToHex(dec)
 	{
 		sOut = "0";
 	}
-	//Debug("decToHex(" + dec + ") = \"" + sOut + "\"");
 	return sOut;
 }
 
@@ -81,7 +77,6 @@ function convertAsciiToHex(str)
 function convertHexToAscii(str)
 {
 	str = str.replace(/ \r\n/g,'');
-	Debug("convertHexToAscii(\"" + str + "\"");
 	if (str.length == 0 || str.length % 2 == 1)
 	{
 		return "";

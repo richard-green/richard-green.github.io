@@ -236,7 +236,7 @@ var Debug = (function ()
 
 	function ErrorHandler(message, url, line)
 	{
-		InspectObject({ "message": message, "url": url, "line": line }, "Unhandled Exception", "error");
+		InspectObject(message, "Unhandled Exception:" + message.message, "error");
 		return true;
 	}
 
