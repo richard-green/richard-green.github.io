@@ -1,3 +1,10 @@
+/* ==UserStyle==
+@name         Reddit
+@updateURL    https://www.rdgreen.dev/stylus/Reddit.css
+@license      unlicense
+@preprocessor stylus
+==/UserStyle== */
+
 @-moz-document domain("reddit.com") {
 .link.compressed {
         margin-top: 0 !important;
