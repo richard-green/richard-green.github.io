@@ -387,6 +387,17 @@ body, td, textarea, select, legend, button, option, div.s, font,
     {
         background-color: transparent;
     }
+
+
+html[dark] ytd-page-manager
+{
+    background-color: #14171A;
+}
+
+html[dark] ytd-masthead
+{
+    background-color: #2a2e33;
+}
 }
 
 @-moz-document domain("calendar.google.com") {

@@ -6,7 +6,8 @@
 ==/UserStyle== */
 
 @-moz-document domain("reddit.com") {
-.link.compressed {
+
+    .link.compressed {
         margin-top: 0 !important;
     }
 
@@ -149,7 +150,7 @@
     }
 
     #sr-header-area {
-        background-color: #343C45;
+        background-color: #2a2e33;
         border-bottom: none;
     }
 
@@ -182,7 +183,7 @@
     }
 
     #header {
-        background-color: #252C33;
+        background-color: #2a2e33;
         border-bottom: none;
     }
 
