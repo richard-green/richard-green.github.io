@@ -98,7 +98,7 @@ dd
 {
     margin: 0 auto;
     width: 1000px;
-    background: #ececec url(rdgreen.dev/topinnershade.png) top left repeat-x;
+    background: #eee url(rdgreen.dev/topinnershade.png) top left repeat-x;
 }
 
 #Layer1
@@ -126,7 +126,7 @@ dd
 {
     margin-top: 60px;
     clear: both;
-    background: #ececec url(rdgreen.dev/bottominnershade.png) top left repeat-x;
+    background: #eee url(rdgreen.dev/bottominnershade.png) top left repeat-x;
 }
 
 #Footer1
