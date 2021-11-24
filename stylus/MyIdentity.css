@@ -1,6 +1,8 @@
 @-moz-document domain("dev-identity.15below.local"),
     	       domain("qat-identity.15below.travel"),
-               domain("identity.15below.travel")
+               domain("qat-identity-eu.15below.travel"),
+               domain("identity.15below.travel"),
+               domain("identity-eu.15below.travel")
 {
 	
     *

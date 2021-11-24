@@ -1,364 +1,487 @@
-@namespace url(http://www.w3.org/1999/xhtml);
+@-moz-document domain("dev.15below.local"), domain("qat.15below.travel"), domain("uat.15below.travel"), domain("prd.15below.travel"), domain("qat-eu.15below.travel"), domain("uat-eu.15below.travel"), domain("prd-eu.15below.travel") {
+*,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Segoe UI"
+}
 
-@-moz-document domain("dev.15below.local"),
-domain("qat.15below.travel"),
-domain("uat.15below.travel"),
-domain("prd.15below.travel")
-{
-	*, h1, h2, h3, h4, h5
-	{
-		font-family: "Segoe UI"
-	}
-	
-	html, body,
-	.btn-add-new label, .btn-add-new .label, .element-bank .element-scroll ul.element-select li.btn-add-new label, .element-bank .element-scroll ul.element-select li.btn-add-new .label,
-	div a.btn, div button.btn, div input.btn[type="button"], div .form-control,
-	form label, div label, div.dashboard-filters label,
-	.dropdown-menu,
-	body.navigation-style-side .navigation-container nav ul.nav.nav-pills li a, body.navigation-style-side .navigation-container nav ul.nav.nav-pills li button.dropdown-toggle,
-	.add-button.btn-group ul.dropdown-menu li, .add-button.btn-group ul.dropdown-menu li a, .add-button.btn-group ul.dropdown-menu li label.send-channel-selected-label, .add-button.btn-group.dropdown-container ul.dropdown-menu li, .add-button.btn-group.dropdown-container ul.dropdown-menu li a, .add-button.btn-group.dropdown-container ul.dropdown-menu li label.send-channel-selected-label,
-	ul.dropdown-menu button, .dotted-add-button button,
-	.accordion-toggle
-	{
-		font-size: 12px;
-	}
-	
-	.navigation-style-compact .dash-navigation-icons nav ul.nav.nav-pills li a, .navigation-style-compact .dash-navigation-icons nav ul.nav.nav-pills li.pill-btn-dropdown a,
-	.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown button.dropdown-toggle, .navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown button.dropdown-toggle,
-	h1, h2, h3, h4, h5,
-	.modal .modal-dialog .modal-header h1,
-	.modal .modal-dialog .modal-header h2,
-	.modal .modal-dialog .modal-header h3,
-	.modal .modal-dialog .modal-content .single-option-container .single-option-label
-	{
-		font-weight: normal;
-	}
-	
-	.template, .channel-icon, .content-block,
-	.btn-add-new,
-	form input.form-control, form textarea.form-control, form .input-group-addon, form select.form-control, div input.form-control, div textarea.form-control, div .input-group-addon, div select.form-control, div.dashboard-filters input.form-control, div.dashboard-filters textarea.form-control, div.dashboard-filters .input-group-addon, div.dashboard-filters select.form-control,
-	.dotted-add-box-large,
-	.element-list .element.panel, .element-scroll .element.panel,
-	.dropdown-menu,
-	.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group, .navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group,
-	.filter-results .strip, .search-results .strip,
-	.filter-results .strip-title, .search-results .strip-title,
-	.tn-panel,
-	.tn-toolbar,
-	.hamburger.dropdown-container button.dropdown-toggle,
-	.btn-group.dropdown-container.open ul.dropdown-menu, .split-buttons.open ul.dropdown-menu, .input-group-btn.open ul.dropdown-menu, ul.nav.nav-tabs li.dropdown.open ul.dropdown-menu, .dropdown-container.open ul.dropdown-menu,
-	.btn-group.dropdown-container.open ul.dropdown-menu.pull-right, .split-buttons.open ul.dropdown-menu.pull-right, .input-group-btn.open ul.dropdown-menu.pull-right, ul.nav.nav-tabs li.dropdown.open ul.dropdown-menu.pull-right, .dropdown-container.open ul.dropdown-menu.pull-right,
-	.filter-results .expand-toggle, .search-results .expand-toggle,
-	.category-buttons span.category, .category-buttons span.group, .category-buttons button.btn.btn-default.category, .category-filter-container .category-buttons span.category, .category-filter-container .category-buttons span.group, .category-filter-container .category-buttons button.btn.btn-default.category,
-	header .header-bar-button.open li:last-child,
-	header .header-bar-button.open li,
-	header .header-bar-button.open li.divider,
-	.btn-group.language-chooser button.switch-translation, .btn-group.language-chooser button.add-translation, .btn-group.language-chooser button.language-button, .modal-dialog .language-buttons button.switch-translation, .modal-dialog .language-buttons button.add-translation, .modal-dialog .language-buttons button.language-button,
-	.button-list button.btn.btn-default,
-	.panel-space,
-	.element-editor .element-edit-html-box.ace_editor, .element-editor .element-tools, .element-editor .element-edit-text-box, .element-editor iframe.preview-html,
-	.well,
-	.preset-column-container .preset,
-	.preset-column-container:hover .preset,
-	.preset-column-container .preset.selected-preset,
-	.preset-column-container .preset .thumbnail-controls,
-	.add-button.btn-group button.btn.btn-dotted, .add-button.btn-group button.btn.dropdown-toggle, .add-button.btn-group ul.dropdown-menu, .add-button.btn-group.dropdown-container button.btn.btn-dotted, .add-button.btn-group.dropdown-container button.btn.dropdown-toggle, .add-button.btn-group.dropdown-container ul.dropdown-menu,
-	.permission,
-	.queue-tasks .workflow.indicator,
-	.table-container, .management-tables,
-	.notification-data-list-group .data-source-list-item, .notification-data-list-group .subject.panel, .notification-data-list-group .filename.panel, .notification-data-list-group .attachment-list-item, .subject-list .data-source-list-item, .subject-list .subject.panel, .subject-list .filename.panel, .subject-list .attachment-list-item, .filename-list .data-source-list-item, .filename-list .subject.panel, .filename-list .filename.panel, .filename-list .attachment-list-item, .attachment-group .data-source-list-item, .attachment-group .subject.panel, .attachment-group .filename.panel, .attachment-group .attachment-list-item,
-	.queue-tasks .dependent-task-name,
-	.queue-list span,
-	.task-filter .step,
-	.on-off .toggle-track,
-	.hamburger.dropdown-container ul.dropdown-menu li:last-child a, .hamburger.dropdown-container ul.dropdown-menu li:last-child button,
-	.micro-editor .element,
-	.content-usage-warning.alert-warning, .element-usage-warning.alert-warning,
-	.attachment-manager .btn-group button.add-attachment,
-	.smooth-checkbox span,
-	.switch-group.switch-group.switch-group label,
-	.switch-group.switch-group.switch-group input[type="checkbox"]:checked + label,
-	ul.dropdown-menu.ng-valid-date,
-	ul.dropdown-menu.ng-valid-date .btn-group-sm > .btn, ul.dropdown-menu.ng-valid-date .btn-sm,
-	ul.dropdown-menu.ng-valid-date button.btn.btn-sm.btn-success,
-	.expando-horizontal-no-no,
-	.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown:last-child, .navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown:last-child,
-	.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown:last-child a, .navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown:last-child a,
-	.dash-navigation-icons .nav.nav-pills li.pill-btn-dropdown.open ul.navigation-icons-list-group,
-	div button.btn.white-outlined
-	{
-		border-radius: 0 !important;
-		border-width: 1px;
-	}
-	
-	.filter-results .strip, .search-results .strip,
-	.tn-panel,
-	.tn-toolbar,
-	.modal-dialog .language-buttons button.highlighted.language-button,
-	.task-filter .step
-	{
-		box-shadow: none !important;
-	}
-	
-	.accordion-selection .panel-group .selected
-	{
-		box-shadow: inset 0 0 0px 1px rgba(97, 109, 0, 0.5);
-	}
-	
-	.btn-group button.btn:first-child,
-	.btn-group button.btn:last-child,
-	.modal .modal-dialog,
-	.btn,
-	.input-group .input-group-btn:last-child button.btn,
-	.modal-content,
-	.element-list .element.panel.placed .element-details, .element-scroll .element.panel.placed .element-details
-	{
-		border-radius: 0;
-	}
-	
-	.modal .modal-dialog .modal-header h3
-	{
-		font-size: 20px;
-		font-weight: 400;
-		margin-top: -2px;
-	}
-	
-	.thumbnail-style-default .template-type-bar, .attachment-manager .template-type-bar
-	{
-		border-radius: 0;
-		margin: 0 0 0 0;
-		height: 94px;
-	}
-	
-	.attachment-manager .template .template-type-bar
-	{
-		margin: 0;
-		border-radius: 0;
-	}
-	
-	.horizontal-delimiter
-	{
-		border-top-width: 1px;
-	}
-	
-	.dash-navigation-icons
-	{
-		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
-	}
-	
-	.element-box
-	{
-		border-right-width: 1px;
-	}
-	
-	.btn.btn-default.category
-	{
-		line-height: 28px !important;
-		vertical-align: top;
-		padding: 0 8px 2px 8px !important;
-	}
-	
-	.category-filter-container
-	{
-		margin-top: 10px;
-	}
-	
-	.category-filter-container h3
-	{
-		padding-bottom: 10px;
-	}
-	
-	.tn-lock-group-container
-	{
-		padding: 0 0 0 7px;
-	}
-	
-	.tn-lock-group-container .tn-lock-group
-	{
-		padding: 4px 6px;
-		font-size: 11px;
-		margin: 0 6px 4px 0;
-	}
-	
-	.template .template-name, .channel-icon .template-name, .content-block .template-name
-	{
-		overflow: visible;
-	}
-	
-	.send-channel-container .btn-group.send-channel ul.dropdown-menu, .send-channel-container .btn-group.add-button ul.dropdown-menu
-	{
-		border-top: 1px solid #cccccc;
-		box-shadow: 0 3px 6px rgba(0, 0, 0, .175) !important;
-	}
-	
-	textarea,
-	.ace_text-input,
-	.ace_editor,
-	.ace_editor *,
-	.ace_content
-	{
-		font-family: Consolas !important;
-	}
-	
-	.ut-rule-thumbnail
-	{
-		line-height: 24px;
-	}
-	
-	.situational-content .add-content label, .situational-content .add-content .label, .situational-content .add-rule-btn-container label, .situational-content .add-rule-btn-container .label
-	{
-		background-position-y: 1px;
-		font-size: 12px;
-	}
-	
-	.preset-container .expando-horizontal .container.collapsed
-	{
-		max-height: 190px;
-	}
-	
-	.preset-column-container .preset .thumbnail-controls
-	{
-		margin: -5px -5px 0 0;
-	}
-	
-	.vertical-delimiter, .vertical-delimiter-right,
-	.task-setup-display
-	{
-		border-width: 1px;
-	}
-	
-	.task-filter,
-	.unsaved-changes-bar,
-	.top-panel
-	{
-		border-bottom-width: 1px;
-	}
-	
-	.btn-group.language-chooser button.add-translation,
-	.modal-dialog .language-buttons button.add-translation,
-	.attachment-manager .btn-group button.add-attachment,
-	.btn-group.language-chooser button.add-translation:hover,
-	.modal-dialog .language-buttons button.add-translation:hover,
-	.attachment-manager .btn-group button.add-attachment:hover
-	{
-		color: transparent !important;
-	}
-	
-	.notification-data-list-group .data-source-list-item, .subject-list .data-source-list-item, .filename-list .data-source-list-item, .attachment-group .data-source-list-item
-	{
-		min-height: 80px;
-		padding: 7px 10px;
-	}
-	
-	.on-off .toggle
-	{
-		height: 28px;
-	}
-	
-	.hamburger.dropdown-container
-	{
-		top: 10px;
-	}
-	
-	.navigation-style-compact .dash-navigation-icons nav ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown a
-	{
-		max-width: unset;
-	}
-	
-	.navigation-style-compact .dash-navigation-icons nav ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group
-	{
-		margin: 0 0 0 0;
-	}
-	
-	.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open button.dropdown-toggle, .navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open button.dropdown-toggle
-	{
-		border-left: 1px solid #ccc;
-		border-right: 1px solid #ccc;
-	}
-	
-	.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown button.dropdown-toggle, .navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown button.dropdown-toggle
-	{
-		border-left: 1px solid transparent;
-		border-right: 1px solid transparent;
-	}
-	
-	.navigation-style-default .dash-navigation-icons, .navigation-style-compact .dash-navigation-icons,
-	.horizontal-controls
-	{
-		box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25);
-	}
-	
-	.horizontal-controls
-	{
-		border-bottom: none;
-	}
-	
-	.micro-editor .element
-	{
-		margin-top: 5px;
-		margin-bottom: 10px;
-	}
-	
-	.micro-editor .element-box h2.template-title
-	{
-		font-weight: normal;
-	}
-	
-	.horizontal-delimiter
-	{
-		margin: 10px 0;
-	}
-	
-	.modal .element-content-editor
-	{
-		padding-top: 5px !important;
-	}
-	
-	#iframePreview
-	{
-		height: 800px;
-	}
-	
-	.top-panel h1
-	{
-		margin-top: 10px;
-	}
-	
-	.navigation-style-default .dash-navigation-icons, .navigation-style-compact .dash-navigation-icons
-	{
-		box-shadow: none;
-		margin-bottom: 0;
-		border-bottom: 1px solid #ccc;		
-	}
-	.action-buttons
-	{
-		padding: 12px;
-	}
-	.action-buttons button.btn,
-	.action-buttons .btn-group.dropup
-	{
-		margin-right: 0px;
-		margin-left: 12px;
-	}
-	.modal .action-buttons button.btn,
-	.modal .action-buttons .btn-group.dropup
-	{
-		margin-right: 12px;
-		margin-left: 0px;
-	}
-	.btn.btn-primary.dropdown-toggle
-	{
-		margin-left: 10px;
-	}
-	.action-buttons .btn-group.dropup.open ul.dropdown-menu
-	{
-		padding: 0;
-		margin-bottom: 1px;
-		border-width: 1px;
-	}
-	
-	.filter-results .strip, .search-results .strip, .tn-panel, .modal-dialog .language-buttons button.highlighted.language-button, .task-filter .step
-	{
-    	border: 1px solid #ccc;
-	}
+html,
+body,
+.btn-add-new label,
+.btn-add-new .label,
+.element-bank .element-scroll ul.element-select li.btn-add-new label,
+.element-bank .element-scroll ul.element-select li.btn-add-new .label,
+div a.btn,
+div button.btn,
+div input.btn[type="button"],
+div .form-control,
+form label,
+div label,
+div.dashboard-filters label,
+.dropdown-menu,
+body.navigation-style-side .navigation-container nav ul.nav.nav-pills li a,
+body.navigation-style-side .navigation-container nav ul.nav.nav-pills li button.dropdown-toggle,
+.add-button.btn-group ul.dropdown-menu li,
+.add-button.btn-group ul.dropdown-menu li a,
+.add-button.btn-group ul.dropdown-menu li label.send-channel-selected-label,
+.add-button.btn-group.dropdown-container ul.dropdown-menu li,
+.add-button.btn-group.dropdown-container ul.dropdown-menu li a,
+.add-button.btn-group.dropdown-container ul.dropdown-menu li label.send-channel-selected-label,
+ul.dropdown-menu button,
+.dotted-add-button button,
+.accordion-toggle {
+    font-size: 12px;
+}
+
+#module-navigation .module .module-title,
+ul.dropdown-menu a,
+ul.dropdown-menu button,
+ul.dropdown-menu span {
+    font-size: 1rem;
+}
+
+.navigation-style-compact .dash-navigation-icons nav ul.nav.nav-pills li a,
+.navigation-style-compact .dash-navigation-icons nav ul.nav.nav-pills li.pill-btn-dropdown a,
+.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown button.dropdown-toggle,
+.navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown button.dropdown-toggle,
+h1,
+h2,
+h3,
+h4,
+h5,
+.modal .modal-dialog .modal-header h1,
+.modal .modal-dialog .modal-header h2,
+.modal .modal-dialog .modal-header h3,
+.modal .modal-dialog .modal-content .single-option-container .single-option-label {
+    font-weight: normal;
+}
+
+.template,
+.channel-icon,
+.content-block,
+.btn-add-new,
+form input.form-control,
+form textarea.form-control,
+form .input-group-addon,
+form select.form-control,
+div input.form-control,
+div textarea.form-control,
+div .input-group-addon,
+div select.form-control,
+div.dashboard-filters input.form-control,
+div.dashboard-filters textarea.form-control,
+div.dashboard-filters .input-group-addon,
+div.dashboard-filters select.form-control,
+.dotted-add-box-large,
+.element-list .element.panel,
+.element-scroll .element.panel,
+.dropdown-menu,
+.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group,
+.navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group,
+.filter-results .strip,
+.search-results .strip,
+.filter-results .strip-title,
+.search-results .strip-title,
+.tn-panel,
+.tn-toolbar,
+.hamburger.dropdown-container button.dropdown-toggle,
+.btn-group.dropdown-container.open ul.dropdown-menu,
+.split-buttons.open ul.dropdown-menu,
+.input-group-btn.open ul.dropdown-menu,
+ul.nav.nav-tabs li.dropdown.open ul.dropdown-menu,
+.dropdown-container.open ul.dropdown-menu,
+.btn-group.dropdown-container.open ul.dropdown-menu.pull-right,
+.split-buttons.open ul.dropdown-menu.pull-right,
+.input-group-btn.open ul.dropdown-menu.pull-right,
+ul.nav.nav-tabs li.dropdown.open ul.dropdown-menu.pull-right,
+.dropdown-container.open ul.dropdown-menu.pull-right,
+.filter-results .expand-toggle,
+.search-results .expand-toggle,
+.category-buttons span.category,
+.category-buttons span.group,
+.category-buttons button.btn.btn-default.category,
+.category-filter-container .category-buttons span.category,
+.category-filter-container .category-buttons span.group,
+.category-filter-container .category-buttons button.btn.btn-default.category,
+header .header-bar-button.open li:last-child,
+header .header-bar-button.open li,
+header .header-bar-button.open li.divider,
+.btn-group.language-chooser button.switch-translation,
+.btn-group.language-chooser button.add-translation,
+.btn-group.language-chooser button.language-button,
+.modal-dialog .language-buttons button.switch-translation,
+.modal-dialog .language-buttons button.add-translation,
+.modal-dialog .language-buttons button.language-button,
+.button-list button.btn.btn-default,
+.panel-space,
+.element-editor .element-edit-html-box.ace_editor,
+.element-editor .element-tools,
+.element-editor .element-edit-text-box,
+.element-editor iframe.preview-html,
+.well,
+.preset-column-container .preset,
+.preset-column-container:hover .preset,
+.preset-column-container .preset.selected-preset,
+.preset-column-container .preset .thumbnail-controls,
+.add-button.btn-group button.btn.btn-dotted,
+.add-button.btn-group button.btn.dropdown-toggle,
+.add-button.btn-group ul.dropdown-menu,
+.add-button.btn-group.dropdown-container button.btn.btn-dotted,
+.add-button.btn-group.dropdown-container button.btn.dropdown-toggle,
+.add-button.btn-group.dropdown-container ul.dropdown-menu,
+.permission,
+.queue-tasks .workflow.indicator,
+.table-container,
+.management-tables,
+.notification-data-list-group .data-source-list-item,
+.notification-data-list-group .subject.panel,
+.notification-data-list-group .filename.panel,
+.notification-data-list-group .attachment-list-item,
+.subject-list .data-source-list-item,
+.subject-list .subject.panel,
+.subject-list .filename.panel,
+.subject-list .attachment-list-item,
+.filename-list .data-source-list-item,
+.filename-list .subject.panel,
+.filename-list .filename.panel,
+.filename-list .attachment-list-item,
+.attachment-group .data-source-list-item,
+.attachment-group .subject.panel,
+.attachment-group .filename.panel,
+.attachment-group .attachment-list-item,
+.queue-tasks .dependent-task-name,
+.queue-list span,
+.task-filter .step,
+.on-off .toggle-track,
+.hamburger.dropdown-container ul.dropdown-menu li:last-child a,
+.hamburger.dropdown-container ul.dropdown-menu li:last-child button,
+.micro-editor .element,
+.content-usage-warning.alert-warning,
+.element-usage-warning.alert-warning,
+.attachment-manager .btn-group button.add-attachment,
+.smooth-checkbox span,
+.switch-group.switch-group.switch-group label,
+.switch-group.switch-group.switch-group input[type="checkbox"]:checked + label,
+ul.dropdown-menu.ng-valid-date,
+ul.dropdown-menu.ng-valid-date .btn-group-sm > .btn,
+ul.dropdown-menu.ng-valid-date .btn-sm,
+ul.dropdown-menu.ng-valid-date button.btn.btn-sm.btn-success,
+.expando-horizontal-no-no,
+.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown:last-child,
+.navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown:last-child,
+.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown:last-child a,
+.navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown:last-child a,
+.dash-navigation-icons .nav.nav-pills li.pill-btn-dropdown.open ul.navigation-icons-list-group,
+div button.btn.white-outlined {
+    border-radius: 0 !important;
+    border-width: 1px;
+}
+
+.filter-results .strip,
+.search-results .strip,
+.tn-panel,
+.tn-toolbar,
+.modal-dialog .language-buttons button.highlighted.language-button,
+.task-filter .step {
+    box-shadow: none !important;
+}
+
+.preset {
+    padding: 15px;
+}
+
+.preset-container .tn-panel {
+    border: 1px solid #cccccc;
+}
+
+.tn-contents {
+    padding: 6px 0 6px 8px
+}
+
+.preset-container .tn-toolbar {
+    padding: 3px 0 5px 3px;
+}
+
+.tn-toolbar .tn-control {
+    margin: 2px 3px;
+}
+
+.preset-container .tn-panel:hover,
+.preset-container .selected-preset.tn-panel,
+.preset-container .selected-preset.tn-panel:hover {
+    border: 1px solid #66afe9;
+}
+
+.strip-title .title {
+    font-size: 1.2em;
+}
+
+.filter-results .action-times, .search-results .action-times {
+    top: 1.8em;
+}
+
+.vertical-delimiter {
+    border-left: 1px solid #ccc;
+}
+
+#module-navigation .module .module-title {
+    bottom: 7px
+}
+
+ul.dropdown-menu a,
+ul.dropdown-menu button,
+ul.dropdown-menu span {
+    line-height: 1.8rem;
+}
+
+
+.accordion-selection .panel-group .selected {
+    box-shadow: inset 0 0 0px 1px rgba(97, 109, 0, 0.5);
+}
+
+.btn-group button.btn:first-child,
+.btn-group button.btn:last-child,
+.modal .modal-dialog,
+.btn,
+.input-group .input-group-btn:last-child button.btn,
+.modal-content,
+.element-list .element.panel.placed .element-details,
+.element-scroll .element.panel.placed .element-details {
+    border-radius: 0;
+}
+
+.modal .modal-dialog .modal-header h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: -2px;
+}
+
+.thumbnail-style-default .template-type-bar,
+.attachment-manager .template-type-bar {
+    border-radius: 0;
+    margin: 0 0 0 0;
+    height: 94px;
+}
+
+.attachment-manager .template .template-type-bar {
+    margin: 0;
+    border-radius: 0;
+}
+
+.horizontal-delimiter {
+    border-top-width: 1px;
+}
+
+.dash-navigation-icons {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.element-box {
+    border-right-width: 1px;
+}
+
+.btn.btn-default.category {
+    line-height: 28px !important;
+    vertical-align: top;
+    padding: 0 8px 2px 8px !important;
+}
+
+.category-filter-container {
+    margin-top: 10px;
+}
+
+.category-filter-container h3 {
+    padding-bottom: 10px;
+}
+
+.tn-lock-group-container {
+    padding: 0 0 0 7px;
+}
+
+.tn-lock-group-container .tn-lock-group {
+    padding: 4px 6px;
+    font-size: 11px;
+    margin: 0 6px 4px 0;
+}
+
+.template .template-name,
+.channel-icon .template-name,
+.content-block .template-name {
+    overflow: visible;
+}
+
+.send-channel-container .btn-group.send-channel ul.dropdown-menu,
+.send-channel-container .btn-group.add-button ul.dropdown-menu {
+    border-top: 1px solid #cccccc;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .175) !important;
+}
+
+textarea,
+.ace_text-input,
+.ace_editor,
+.ace_editor *,
+.ace_content {
+    font-family: Consolas !important;
+}
+
+.ut-rule-thumbnail {
+    line-height: 24px;
+}
+
+.situational-content .add-content label,
+.situational-content .add-content .label,
+.situational-content .add-rule-btn-container label,
+.situational-content .add-rule-btn-container .label {
+    background-position-y: 1px;
+    font-size: 12px;
+}
+
+.expando-control {
+    height: 2.7rem;
+}
+
+.preset-container .expando-horizontal .container.collapsed {
+    max-height: 190px;
+}
+
+.preset-column-container .preset .thumbnail-controls {
+    margin: -5px -5px 0 0;
+}
+
+.vertical-delimiter,
+.vertical-delimiter-right,
+.task-setup-display {
+    border-width: 1px;
+}
+
+.task-filter,
+.unsaved-changes-bar,
+.top-panel {
+    border-bottom-width: 1px;
+}
+
+.btn-group.language-chooser button.add-translation,
+.modal-dialog .language-buttons button.add-translation,
+.attachment-manager .btn-group button.add-attachment,
+.btn-group.language-chooser button.add-translation:hover,
+.modal-dialog .language-buttons button.add-translation:hover,
+.attachment-manager .btn-group button.add-attachment:hover {
+    color: transparent !important;
+}
+
+.notification-data-list-group .data-source-list-item,
+.subject-list .data-source-list-item,
+.filename-list .data-source-list-item,
+.attachment-group .data-source-list-item {
+    min-height: 80px;
+    padding: 7px 10px;
+}
+
+.on-off .toggle {
+    height: 28px;
+}
+
+.hamburger.dropdown-container {
+    top: 10px;
+}
+
+.navigation-style-compact .dash-navigation-icons nav ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group li.pill-btn-dropdown a {
+    max-width: unset;
+}
+
+.navigation-style-compact .dash-navigation-icons nav ul.nav.nav-pills li.pill-btn-dropdown.open ul.dropdown-menu.navigation-icons-list-group {
+    margin: 0 0 0 0;
+}
+
+.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open button.dropdown-toggle,
+.navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown.open button.dropdown-toggle {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.navigation-style-default .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown button.dropdown-toggle,
+.navigation-style-compact .dash-navigation-icons ul.nav.nav-pills li.pill-btn-dropdown button.dropdown-toggle {
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+}
+
+.navigation-style-default .dash-navigation-icons,
+.navigation-style-compact .dash-navigation-icons,
+.horizontal-controls {
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.horizontal-controls {
+    border-bottom: none;
+}
+
+.micro-editor .element {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.micro-editor .element-box h2.template-title {
+    font-weight: normal;
+}
+
+.horizontal-delimiter {
+    margin: 10px 0;
+}
+
+.modal .element-content-editor {
+    padding-top: 5px !important;
+}
+
+#iframePreview {
+    height: 800px;
+}
+
+.top-panel h1 {
+    margin-top: 10px;
+}
+
+.navigation-style-default .dash-navigation-icons,
+.navigation-style-compact .dash-navigation-icons {
+    box-shadow: none;
+    margin-bottom: 0;
+    border-bottom: 1px solid #ccc;
+}
+.action-buttons {
+    padding: 12px;
+}
+.action-buttons button.btn,
+.action-buttons .btn-group.dropup {
+    margin-right: 1px;
+    margin-left: 12px;
+}
+
+.modal .action-buttons button.btn,
+.modal .action-buttons .btn-group.dropup {
+    margin-right: 12px;
+    margin-left: 0px;
+}
+
+.modal .action-buttons .btn-group button.btn {
+    margin-right: 1px;
+}
+
+.btn.btn-primary.dropdown-toggle {
+    margin-left: 10px;
+}
+.action-buttons .btn-group.dropup.open ul.dropdown-menu {
+    padding: 0;
+    margin-bottom: 1px;
+    border-width: 1px;
+}
+
+.filter-results .strip,
+.search-results .strip,
+.tn-panel,
+.modal-dialog .language-buttons button.highlighted.language-button,
+.task-filter .step {
+    border: 1px solid #ccc;
+}
 }
