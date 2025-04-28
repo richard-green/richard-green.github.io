@@ -1,0 +1,44 @@
+server {
+    server_name rdgreen.dev www.rdgreen.dev;
+
+    root /var/www/rdgreen.dev;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Optional: gzip static assets
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+    gzip_min_length 256;
+
+    # Optional: Cache control for static files
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|otf)$ {
+        expires 30d;
+        access_log off;
+        add_header Cache-Control "public";
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/rdgreen.dev/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/rdgreen.dev/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    if ($host = www.rdgreen.dev) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = rdgreen.dev) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name rdgreen.dev www.rdgreen.dev;
+    return 301 https://$host$request_uri; # redirect HTTP to HTTPS
+}
