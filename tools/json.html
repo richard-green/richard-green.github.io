@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <title>JSON Formatter</title>
     <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
-    <script type="text/javascript" src="/js/Debug.js"></script>
-    <script type="text/javascript" src="/js/jsonHighlight.js"></script>
+    <script type="text/javascript" src="../js/Debug.js"></script>
+    <script type="text/javascript" src="../js/jsonHighlight.js"></script>
     <script type="text/javascript">
       function formatNow(json_in, json_out) {
         var error = document.getElementById("error");
         json_in = document.getElementById(json_in);
         json_out = document.getElementById(json_out);
         try {
-          json_out.innerHTML = jsonHighlight.highlight(
-            JSON.parse(json_in.value)
-          );
+          var matches = jsonHighlight.getMatches(JSON.parse(json_in.value));
+          json_out.innerHTML = matches
+            .map((m) => `<span class='${m.cls}'>${m.text}</span>`)
+            .join("");
           error.innerHTML = "";
         } catch (ex) {
           error.innerHTML = ex;
@@ -22,14 +23,29 @@
       }
 
       function copyJson() {
+        // Save current scroll position
+        var scrollX = window.scrollX;
+        var scrollY = window.scrollY;
+        // Retrieve the text content
         var text = document.getElementById("json_out").textContent;
+        // Create an off-screen textarea
         var input = document.createElement("textarea");
+        input.style.position = "fixed";
+        input.style.top = "-9999px";
         document.body.appendChild(input);
         input.value = text;
         input.focus();
         input.select();
-        document.execCommand("Copy");
+        document.execCommand("copy");
         input.remove();
+        // Restore original scroll position
+        window.scrollTo(scrollX, scrollY);
+
+        const tick = document.getElementById("tick");
+        tick.style.display = "inline";
+        setTimeout(() => {
+          tick.style.display = "none";
+        }, 2500);
       }
     </script>
     <style type="text/css">
@@ -37,31 +53,43 @@
       #json_out {
         font-size: 11pt;
         font-family: Consolas, Monospace;
-        width: 910px;
         padding: 5px;
         min-height: 200px;
+        border: 1px solid silver;
       }
       #json_in {
-        border: none;
+        width: 908px;
       }
       #json_out {
-        overflow: auto;
-        background-color: #fff;
+        font-family: monospace;
+        border: 1px solid silver;
+        padding: 0.5rem;
+        background: #0d1313;
+        clear: right;
+        overflow-x: scroll;
       }
-      #json_out .key {
-        color: #00f;
+      .plain {
+        color: #d0d062;
       }
-      #json_out .string {
-        color: #080;
+      .key {
+        color: #89cce9;
       }
-      #json_out .boolean {
-        color: #f00;
+      .number {
+        color: #61e2c4;
       }
-      #json_out .null {
-        color: #aaa;
+      .string {
+        color: #d59188;
+      }
+      .boolean {
+        color: #258ce0;
+      }
+      .null {
+        color: #636363;
       }
       #error {
-        color: #f00;
+        color: rgb(232, 55, 15);
+        font-size: 1rem;
+        font-family: monospace;
       }
     </style>
   </head>
@@ -94,9 +122,13 @@
                 ></textarea>
               </p>
 
-              <p id="error"></p>
+              <span id="error"></span>
+              <br />
 
-              <h3>Output - <button onclick="copyJson()">Copy</button></h3>
+              <h3>
+                Output - <button onclick="copyJson()">Copy</button>
+                <span id="tick" style="display: none">✔️</span>
+              </h3>
 
               <pre id="json_out"></pre>
             </div>

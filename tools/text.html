@@ -16,13 +16,15 @@
       input[type="text"] {
         padding: 5px;
         margin-right: 5px;
+        border: 1px solid silver;
       }
       #text_area {
         font-size: 11pt;
         font-family: Consolas, Monospace;
-        width: 910px;
+        width: 908px;
         padding: 5px;
-        min-height: 800px;
+        min-height: 200px;
+        border: 1px solid silver;
       }
     </style>
     <script type="text/javascript">
@@ -126,10 +128,10 @@
                   Remove Duplicate Lines
                 </button>
                 <button onclick="removeBlankLines()">Remove Blank Lines</button>
+                <button onclick="trimLines()">Trim Lines</button>
                 <button onclick="toLowerCase()">Lowercase</button>
                 <button onclick="toUpperCase()">Uppercase</button>
                 <button onclick="toTitleCase()">Titlecase</button>
-                <button onclick="trimLines()">Trim Lines</button>
               </div>
               <div class="button-group">
                 <input type="text" id="search_term" placeholder="Search" />
@@ -139,6 +141,9 @@
               <textarea
                 id="text_area"
                 placeholder="Enter your text here..."
+                cols="100"
+                rows="40"
+                style="resize: vertical"
               ></textarea>
             </div>
             <div id="Footer0">
