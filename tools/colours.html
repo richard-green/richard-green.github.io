@@ -1,307 +1,374 @@
 <!DOCTYPE html>
 <html>
-    <head>
-		<meta charset="UTF-8">
-        <title>JavaScript Tools - Colours</title>
-        <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
-        <style type='text/css'>
-            #colour
-            {
-                height: 64px;
-                border: 2px solid black;
-                background-color: #fff;
-                clear: both;
-            }
-            #blend
-            {
-                margin-top: 32px;
-                height: 64px;
-                border: 2px solid black;
-                background: url(../images/alpha.gif);
-                clear: both;
-            }
-            #panel_converter
-            {
-                height: 1px;
-            }
-            #panel_rgb, #panel_buttons, #panel_hex
-            {
-                margin: 0;
-                padding: 0;
-                width: 33%;
-                height: 100px;
-                float: left;
-            }
-            #panel_buttons
-            {
-                text-align: center;
-            }
-            #panel_hex
-            {
-                text-align: right;
-            }
-            #panel_buttons input
-            {
-                width: 160px;
-                margin-bottom: 10px;
-            }
-            h3
-            {
-                clear: both;
-            }
-            label
-            {
-                font-family: courier new;
-                font-size: 1.2em;
-            }
-            #blend div
-            {
-                float: left;
-                height: 100%;
-            }
-            input.text
-            {
-				font-family: courier new;
-				font-size: 1.2em;
-			}
-			#tblScratchPad
-			{
-				margin-top: 1em;
-			}
-			#tblScratchPad th,
-			#tblScratchPad td
-			{
-				padding: 2px;
-				font-size: 1.2em;
-				text-align: left;
-			}
-        </style>
-        <script type='text/javascript'>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Tools - Colours</title>
+    <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
+    <style type="text/css">
+      #colour {
+        height: 64px;
+        border: 2px solid black;
+        background-color: #fff;
+        clear: both;
+      }
+      #blend {
+        margin-top: 32px;
+        height: 64px;
+        border: 2px solid black;
+        background: url(../images/alpha.gif);
+        clear: both;
+      }
+      #panel_converter {
+        height: 1px;
+      }
+      #panel_rgb,
+      #panel_buttons,
+      #panel_hex {
+        margin: 0;
+        padding: 0;
+        width: 33%;
+        height: 100px;
+        float: left;
+      }
+      #panel_buttons {
+        text-align: center;
+      }
+      #panel_hex {
+        text-align: right;
+      }
+      #panel_buttons input {
+        width: 160px;
+        margin-bottom: 10px;
+      }
+      h3 {
+        clear: both;
+      }
+      label {
+        font-family: courier new;
+        font-size: 1.2em;
+      }
+      #blend div {
+        float: left;
+        height: 100%;
+      }
+      input.text {
+        font-family: courier new;
+        font-size: 1.2em;
+      }
+      #tblScratchPad {
+        margin-top: 1em;
+      }
+      #tblScratchPad th,
+      #tblScratchPad td {
+        padding: 2px;
+        font-size: 1.2em;
+        text-align: left;
+      }
+    </style>
+    <script type="text/javascript">
+      function colourDropped() {
+        if (document.getElementById("empty_table_row") != null) {
+          var deleteme = document.getElementById("empty_table_row");
+          deleteme.parentNode.removeChild(deleteme);
+        }
 
-        	function colourDropped()
-        	{
-        		if (document.getElementById("empty_table_row") != null)
-        		{
-        			var deleteme = document.getElementById("empty_table_row");
-        			deleteme.parentNode.removeChild(deleteme);
-        		}
+        var colour_drop_zone = document.getElementById("colour_drop_zone");
+        var tblBody = document.getElementById("tblScratchPad").tBodies[0];
+        var rgb = hexColourToRgb(colour_drop_zone.value);
+        colour_drop_zone.value = "";
+        var newRow = tblBody.insertRow(0);
+        var newCell0 = newRow.insertCell(0);
+        newCell0.appendChild(document.createTextNode(rgb.hex));
+        var newCell1 = newRow.insertCell(1);
+        newCell1.style.backgroundColor = rgb.hex;
+      }
 
-				var colour_drop_zone = document.getElementById("colour_drop_zone");
-				var tblBody = document.getElementById("tblScratchPad").tBodies[0];
-				var rgb = hexColourToRgb(colour_drop_zone.value);
-				colour_drop_zone.value = "";
-				var newRow = tblBody.insertRow(0);
-				var newCell0 = newRow.insertCell(0);
-				newCell0.appendChild(document.createTextNode(rgb.hex));
-				var newCell1 = newRow.insertCell(1);
-				newCell1.style.backgroundColor = rgb.hex;
-        	}
+      function rgbToHex() {
+        var colour_red = document.getElementById("colour_red");
+        var colour_green = document.getElementById("colour_green");
+        var colour_blue = document.getElementById("colour_blue");
+        var colour_hex = document.getElementById("colour_hex");
+        var colour = document.getElementById("colour");
 
-            function rgbToHex()
-            {
-                var colour_red = document.getElementById("colour_red");
-                var colour_green = document.getElementById("colour_green");
-                var colour_blue = document.getElementById("colour_blue");
-                var colour_hex = document.getElementById("colour_hex");
-                var colour = document.getElementById("colour");
+        var r = parseInt(colour_red.value, 10);
+        var g = parseInt(colour_green.value, 10);
+        var b = parseInt(colour_blue.value, 10);
 
-                var r = parseInt(colour_red.value, 10);
-                var g = parseInt(colour_green.value, 10);
-                var b = parseInt(colour_blue.value, 10);
+        colour_hex.value =
+          decToHex(parseInt(r / 16)) +
+          decToHex(r % 16) +
+          decToHex(parseInt(g / 16)) +
+          decToHex(g % 16) +
+          decToHex(parseInt(b / 16)) +
+          decToHex(b % 16);
 
-                colour_hex.value =
-                    decToHex(parseInt(r / 16)) + decToHex(r % 16) +
-                    decToHex(parseInt(g / 16)) + decToHex(g % 16) +
-                    decToHex(parseInt(b / 16)) + decToHex(b % 16);
+        colour.style.backgroundColor = "#" + colour_hex.value;
+      }
 
-                colour.style.backgroundColor = "#" + colour_hex.value;
-            }
+      function hexToRGB() {
+        var colour_red = document.getElementById("colour_red");
+        var colour_green = document.getElementById("colour_green");
+        var colour_blue = document.getElementById("colour_blue");
+        var colour_hex = document.getElementById("colour_hex");
+        var colour = document.getElementById("colour");
 
-            function hexToRGB()
-            {
-            	var colour_red = document.getElementById("colour_red");
-                var colour_green = document.getElementById("colour_green");
-                var colour_blue = document.getElementById("colour_blue");
-                var colour_hex = document.getElementById("colour_hex");
-                var colour = document.getElementById("colour");
+        var rgb = hexColourToRgb(colour_hex.value);
 
-                var rgb = hexColourToRgb(colour_hex.value);
+        colour_red.value = rgb.r;
+        colour_green.value = rgb.g;
+        colour_blue.value = rgb.b;
 
-				colour_red.value = rgb.r;
-				colour_green.value = rgb.g;
-				colour_blue.value = rgb.b;
+        colour.style.backgroundColor = rgb.hex;
+      }
 
-                colour.style.backgroundColor = rgb.hex;
-            }
+      function hexColourToRgb(colour_hex) {
+        if (colour_hex.indexOf("#") == 0) {
+          colour_hex = colour_hex.substring(1);
+        }
+        if (colour_hex.length == 3) {
+          return {
+            r: parseInt(
+              colour_hex.substring(0, 1) + colour_hex.substring(0, 1),
+              16
+            ),
+            g: parseInt(
+              colour_hex.substring(1, 2) + colour_hex.substring(1, 2),
+              16
+            ),
+            b: parseInt(
+              colour_hex.substring(2, 3) + colour_hex.substring(2, 3),
+              16
+            ),
+            hex: "#" + colour_hex,
+          };
+        } else if (colour_hex.length == 6) {
+          return {
+            r: parseInt(colour_hex.substring(0, 2), 16),
+            g: parseInt(colour_hex.substring(2, 4), 16),
+            b: parseInt(colour_hex.substring(4, 6), 16),
+            hex: "#" + colour_hex,
+          };
+        } else {
+          alert("Invalid hex colour: " + colour_hex);
+        }
+      }
 
-            function hexColourToRgb(colour_hex)
-            {
-            	if (colour_hex.indexOf("#") == 0)
-            	{
-            		colour_hex = colour_hex.substring(1);
-            	}
-                if (colour_hex.length == 3)
-                {
-                	return	{ "r": parseInt(colour_hex.substring(0,1) + colour_hex.substring(0,1), 16)
-                			, "g": parseInt(colour_hex.substring(1,2) + colour_hex.substring(1,2), 16)
-                			, "b": parseInt(colour_hex.substring(2,3) + colour_hex.substring(2,3), 16)
-                			, "hex": "#" + colour_hex
-                			};
-                }
-                else if (colour_hex.length == 6)
-                {
-                	return	{ "r": parseInt(colour_hex.substring(0,2), 16)
-                			, "g": parseInt(colour_hex.substring(2,4), 16)
-                			, "b": parseInt(colour_hex.substring(4,6), 16)
-                			, "hex": "#" + colour_hex
-                			};
-                }
-                else
-                {
-                	alert("Invalid hex colour: " + colour_hex);
-                }
-            }
+      // Blender Functions //
 
-            // Blender Functions //
+      function Blend() {
+        var blend_steps = parseInt(
+          document.getElementById("blend_steps").value,
+          10
+        );
+        if (blend_steps < 2) blend_steps = 2;
+        else if (blend_steps > 256) blend_steps = 256;
 
-            function Blend()
-            {
-                var blend_steps = parseInt(document.getElementById("blend_steps").value, 10);
-                if (blend_steps < 2) blend_steps = 2;
-                else if (blend_steps > 256) blend_steps = 256;
+        var blend = document.getElementById("blend");
+        blend.innerHTML = "";
 
-                var blend = document.getElementById("blend");
-                blend.innerHTML = "";
+        var step_width = 100 / blend_steps + "%";
 
-                var step_width = (100 / blend_steps) + "%";
+        var colour_from = document.getElementById("colour_from");
+        var colour_to = document.getElementById("colour_to");
 
-                var colour_from = document.getElementById("colour_from");
-                var colour_to = document.getElementById("colour_to");
+        var colour_from_rgb = hexColourToRgb(colour_from.value);
+        var colour_to_rgb = hexColourToRgb(colour_to.value);
 
-                var colour_from_rgb = hexColourToRgb(colour_from.value);
-                var colour_to_rgb = hexColourToRgb(colour_to.value);
+        var colour_blend_hex;
 
-                var colour_blend_hex;
+        for (i = 0; i < blend_steps; i++) {
+          var r = parseInt(
+            colour_from_rgb.r +
+              (colour_to_rgb.r - colour_from_rgb.r) * (i / (blend_steps - 1))
+          );
+          var g = parseInt(
+            colour_from_rgb.g +
+              (colour_to_rgb.g - colour_from_rgb.g) * (i / (blend_steps - 1))
+          );
+          var b = parseInt(
+            colour_from_rgb.b +
+              (colour_to_rgb.b - colour_from_rgb.b) * (i / (blend_steps - 1))
+          );
 
-                for (i=0; i<blend_steps; i++)
-                {
-                    var r = parseInt(colour_from_rgb.r + (colour_to_rgb.r - colour_from_rgb.r) * (i / (blend_steps-1)));
-                    var g = parseInt(colour_from_rgb.g + (colour_to_rgb.g - colour_from_rgb.g) * (i / (blend_steps-1)));
-                    var b = parseInt(colour_from_rgb.b + (colour_to_rgb.b - colour_from_rgb.b) * (i / (blend_steps-1)));
+          colour_blend_hex =
+            decToHex(parseInt(r / 16)) +
+            decToHex(r % 16) +
+            decToHex(parseInt(g / 16)) +
+            decToHex(g % 16) +
+            decToHex(parseInt(b / 16)) +
+            decToHex(b % 16);
 
-                    colour_blend_hex =
-                        decToHex(parseInt(r / 16)) + decToHex(r % 16) +
-                        decToHex(parseInt(g / 16)) + decToHex(g % 16) +
-                        decToHex(parseInt(b / 16)) + decToHex(b % 16);
+          var blend_step = document.createElement("div");
+          blend_step.style.width = step_width;
+          blend_step.style.backgroundColor = "#" + colour_blend_hex;
+          blend_step.hexColor = colour_blend_hex;
+          blend_step.onclick = function () {
+            document.getElementById("colour_blend_value").value = this.hexColor;
+            document.getElementById("colour_hex").value = this.hexColor;
+            hexToRGB();
+          };
+          blend.appendChild(blend_step);
+        }
+      }
+    </script>
+  </head>
 
-                    var blend_step = document.createElement("div");
-                    blend_step.style.width = step_width;
-                    blend_step.style.backgroundColor = "#" + colour_blend_hex;
-                    blend_step.hexColor = colour_blend_hex;
-                    blend_step.onclick = function ()
-                    {
-						document.getElementById("colour_blend_value").value = this.hexColor;
-						document.getElementById("colour_hex").value = this.hexColor;
-						hexToRGB();
-                    }
-                    blend.appendChild(blend_step);
-                }
-            }
-        </script>
-    </head>
+  <body>
+    <div id="Layer0">
+      <div id="Layer1">
+        <div id="Layer2">
+          <div id="Layer3">
+            <div id="Layer4">
+              <h1>
+                <a href="../"
+                  ><img
+                    src="../styles/rdgreen.dev/rich@rdgreen.dev.png"
+                    alt="rich&#64;rdgreen.dev"
+                    title="rich&#64;rdgreen.dev"
+                /></a>
+              </h1>
 
-    <body>
+              <h2><a href="./">JavaScript Tools</a> - Colours</h2>
 
-        <div id='Layer0'>
-            <div id='Layer1'>
-                <div id='Layer2'>
-                    <div id='Layer3'>
-                        <div id='Layer4'>
+              <h3>Colour Converter</h3>
 
-                            <h1><a href='../'><img src='../styles/rdgreen.dev/rich@rdgreen.dev.png' alt='rich&#64;rdgreen.dev' title='rich&#64;rdgreen.dev' /></a></h1>
-
-                            <h2><a href='./'>JavaScript Tools</a> - Colours</h2>
-
-                            <h3>Colour Converter</h3>
-
-                            <div id='panel_converter'>
-                                <div id='panel_rgb'>
-                                    <label for='colour_red'>R:</label>&nbsp;<input type='text' class='text' name='colour_red' id='colour_red' value='255' /><br />
-                                    <label for='colour_green'>G:</label>&nbsp;<input type='text' class='text' name='colour_green' id='colour_green' value='255' /><br />
-                                    <label for='colour_blue'>B:</label>&nbsp;<input type='text' class='text' name='colour_blue' id='colour_blue' value='255' />
-                                </div>
-                                <div id='panel_buttons'>
-                                    <input type='button' onclick='rgbToHex();' value='Convert to Hex &gt;&gt;' /><br />
-                                    <input type='button' onclick='hexToRGB();' value='&lt;&lt; Convert to RGB' />
-                                </div>
-                                <div id='panel_hex'>
-                                    <label for='colour_hex'>Hex:</label>&nbsp;<input type='text' class='text' name='colour_hex' id='colour_hex' value='ffffff' />
-                                </div>
-                            </div>
-
-                            <div id='colour'>&nbsp;</div>
-
-                            <h3>Colour Blender</h3>
-
-                            <div id='panel_blender_colours'>
-                                <label for='colour_from'>From:</label>&nbsp;<input type='text' class='text' name='colour_from' id='colour_from' value='000000' />
-                                <label for='colour_to'>To:</label>&nbsp;<input type='text' class='text' name='colour_to' id='colour_to' value='ffffff' />
-                                <label for='blend_steps'>Steps:</label>&nbsp;<input type='text' class='text' name='blend_steps' id='blend_steps' value='16' />
-                                <input type='button' value='Blend!' onclick='Blend();' />
-                            </div>
-                            <div id='blend'>
-                            </div>
-                            <br />
-                            <label for='colour_blend_value'>Selected colour:</label>&nbsp;<input type='text' class='text' name='colour_blend_value' id='colour_blend_value' value='' />
-                            <br />
-                            <br />
-
-                            <h3>Scratch Pad</h3>
-
-                            <label for='colour_drop_zone'>Colour drop zone:</label>&nbsp;<input type='text' class='text' name='colour_drop_zone' id='colour_drop_zone' value='' />
-                            <input type='button' value='Add' onclick='colourDropped()' />
-
-                            <table id="tblScratchPad">
-                            	<thead>
-									<tr>
-										<th>Colour</th>
-										<th>Preview</th>
-									</tr>
-                            	</thead>
-                            	<tbody>
-                            		<tr id="empty_table_row">
-										<td colspan="2"><em>Nothing here...</em></td>
-									</tr>
-                            	</tbody>
-                            </table>
-
-                        </div>
-
-                        <div id='Footer0'>
-                            <div id='Footer1'>
-                                <div id='Footer2'>
-
-                                    <hr />
-
-                                    <p>
-
-                                        Copyright &copy; <script>document.write(new Date().getFullYear())</script> Richard Green.
-                                        <br />
-
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+              <div id="panel_converter">
+                <div id="panel_rgb">
+                  <label for="colour_red">R:</label>&nbsp;<input
+                    type="text"
+                    class="text"
+                    name="colour_red"
+                    id="colour_red"
+                    value="255"
+                  /><br />
+                  <label for="colour_green">G:</label>&nbsp;<input
+                    type="text"
+                    class="text"
+                    name="colour_green"
+                    id="colour_green"
+                    value="255"
+                  /><br />
+                  <label for="colour_blue">B:</label>&nbsp;<input
+                    type="text"
+                    class="text"
+                    name="colour_blue"
+                    id="colour_blue"
+                    value="255"
+                  />
                 </div>
+                <div id="panel_buttons">
+                  <input
+                    type="button"
+                    onclick="rgbToHex();"
+                    value="Convert to Hex &gt;&gt;"
+                  /><br />
+                  <input
+                    type="button"
+                    onclick="hexToRGB();"
+                    value="&lt;&lt; Convert to RGB"
+                  />
+                </div>
+                <div id="panel_hex">
+                  <label for="colour_hex">Hex:</label>&nbsp;<input
+                    type="text"
+                    class="text"
+                    name="colour_hex"
+                    id="colour_hex"
+                    value="ffffff"
+                  />
+                </div>
+              </div>
+
+              <div id="colour">&nbsp;</div>
+
+              <h3>Colour Blender</h3>
+
+              <div id="panel_blender_colours">
+                <label for="colour_from">From:</label>&nbsp;<input
+                  type="text"
+                  class="text"
+                  name="colour_from"
+                  id="colour_from"
+                  value="000000"
+                />
+                <label for="colour_to">To:</label>&nbsp;<input
+                  type="text"
+                  class="text"
+                  name="colour_to"
+                  id="colour_to"
+                  value="ffffff"
+                />
+                <label for="blend_steps">Steps:</label>&nbsp;<input
+                  type="text"
+                  class="text"
+                  name="blend_steps"
+                  id="blend_steps"
+                  value="16"
+                />
+                <input type="button" value="Blend!" onclick="Blend();" />
+              </div>
+              <div id="blend"></div>
+              <br />
+              <label for="colour_blend_value">Selected colour:</label
+              >&nbsp;<input
+                type="text"
+                class="text"
+                name="colour_blend_value"
+                id="colour_blend_value"
+                value=""
+              />
+              <br />
+              <br />
+
+              <h3>Scratch Pad</h3>
+
+              <label for="colour_drop_zone">Colour drop zone:</label
+              >&nbsp;<input
+                type="text"
+                class="text"
+                name="colour_drop_zone"
+                id="colour_drop_zone"
+                value=""
+              />
+              <input type="button" value="Add" onclick="colourDropped()" />
+
+              <table id="tblScratchPad">
+                <thead>
+                  <tr>
+                    <th>Colour</th>
+                    <th>Preview</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="empty_table_row">
+                    <td colspan="2"><em>Nothing here...</em></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+
+            <div id="Footer0">
+              <div id="Footer1">
+                <div id="Footer2">
+                  <hr />
+
+                  <p>
+                    Copyright &copy;
+                    <script>
+                      document.write(new Date().getFullYear());
+                    </script>
+                    Richard Green.
+                    <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <script type='text/javascript' src='../js/Debug.js'></script>
-        <script type='text/javascript' src='../js/Hex.js?v=3'></script>
-
-    </body>
-
+    <script type="text/javascript" src="../js/Debug.js"></script>
+    <script type="text/javascript" src="../js/Hex.js?v=3"></script>
+  </body>
 </html>

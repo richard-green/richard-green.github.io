@@ -1,147 +1,189 @@
 <!DOCTYPE html>
 <html>
-    <head>
-	<meta charset="UTF-8">
-        <title>JavaScript Tools - Regular Expressions</title>
-        <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
-        <script type="text/javascript" src="../js/Debug.js"></script>
-		<script type="text/javascript" src="../js/XRegExp.js"></script>
-		<script type="text/javascript">
-			function doRegexReplace()
-			{
-				var chkMultiline = document.getElementById("chkMultiline"),
-				    chkUnescapeText = document.getElementById("chkUnescapeText"),
-				    txtSource = document.getElementById("txtSource"),
-				    txtDestination = document.getElementById("txtDestination"),
-				    txtReplace = document.getElementById("txtReplace"),
-				    txtWith = document.getElementById("txtWith"),
-				    replaceRegExp = XRegExp(unescape(txtReplace.value), "g"),
-				    uniqueId = /#UniqueID#/g,
-				    currentUniqueId = (new Date()).valueOf(),
-				    lines,
-				    newlines,
-				    withText = chkUnescapeText.checked ? convertTabsNewLines(txtWith.value) : txtWith.value;
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Tools - Regular Expressions</title>
+    <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
+    <script type="text/javascript" src="../js/Debug.js"></script>
+    <script type="text/javascript" src="../js/XRegExp.js"></script>
+    <script type="text/javascript">
+      function doRegexReplace() {
+        var chkMultiline = document.getElementById("chkMultiline"),
+          chkUnescapeText = document.getElementById("chkUnescapeText"),
+          txtSource = document.getElementById("txtSource"),
+          txtDestination = document.getElementById("txtDestination"),
+          txtReplace = document.getElementById("txtReplace"),
+          txtWith = document.getElementById("txtWith"),
+          replaceRegExp = XRegExp(unescape(txtReplace.value), "g"),
+          uniqueId = /#UniqueID#/g,
+          currentUniqueId = new Date().valueOf(),
+          lines,
+          newlines,
+          withText = chkUnescapeText.checked
+            ? convertTabsNewLines(txtWith.value)
+            : txtWith.value;
 
-				if (chkMultiline.checked)
-				{
-					lines = txtSource.value.replace("\r\n", "\n");
-					lines = lines.split("\n");
-					newlines = [];
-					
-					for (var i = 0; i < lines.length; i++)
-					{
-						newlines[i] = lines[i].replace((replaceRegExp), withText).replace((uniqueId), currentUniqueId++);
-					}
-		
-					txtDestination.value = newlines.join("\n");
-				}
-				else
-				{
-					txtDestination.value = txtSource.value.replace((replaceRegExp), withText).replace((uniqueId), currentUniqueId++);
-				}
-			}
+        if (chkMultiline.checked) {
+          lines = txtSource.value.replace("\r\n", "\n");
+          lines = lines.split("\n");
+          newlines = [];
 
-			function convertTabsNewLines(str)
-			{
-				return str.replace(/\\t/g, "\t").replace(/\\n/g, "\n");
-			}
+          for (var i = 0; i < lines.length; i++) {
+            newlines[i] = lines[i]
+              .replace(replaceRegExp, withText)
+              .replace(uniqueId, currentUniqueId++);
+          }
 
-			function checkRegExp()
-			{
-				if (document.getElementById("txtReplace").value == "")
-				{
-					document.getElementById("imgValid").style.display = "none";
-					document.getElementById("imgInvalid").style.display = "none";
-				}
-				else
-				{
-					var valid = true;
-				
-					try
-					{
-						new RegExp(document.getElementById("txtReplace").value);
-					}
-					catch (ex)
-					{
-        	                                document.getElementById("imgInvalid").title = e;
-						valid = false;
-					}
-				
-					document.getElementById("imgValid").style.display = valid ? "" : "none";
-					document.getElementById("imgInvalid").style.display = valid ? "none" : "";
-				}
-			}
-		</script>
-		<style type='text/css'>
-			textarea
-			{
-				width: 800px;
-				resize: vertical;
-			}
-		</style>
-    </head>
+          txtDestination.value = newlines.join("\n");
+        } else {
+          txtDestination.value = txtSource.value
+            .replace(replaceRegExp, withText)
+            .replace(uniqueId, currentUniqueId++);
+        }
+      }
 
-    <body>
+      function convertTabsNewLines(str) {
+        return str.replace(/\\t/g, "\t").replace(/\\n/g, "\n");
+      }
 
-        <div id='Layer0'>
-            <div id='Layer1'>
-                <div id='Layer2'>
-                    <div id='Layer3'>
-                        <div id='Layer4'>
+      function checkRegExp() {
+        if (document.getElementById("txtReplace").value == "") {
+          document.getElementById("imgValid").style.display = "none";
+          document.getElementById("imgInvalid").style.display = "none";
+        } else {
+          var valid = true;
 
-                            <h1><a href='../'><img src='../styles/rdgreen.dev/rich@rdgreen.dev.png' alt='rich&#64;rdgreen.dev' title='rich&#64;rdgreen.dev' /></a></h1>
+          try {
+            new RegExp(document.getElementById("txtReplace").value);
+          } catch (ex) {
+            document.getElementById("imgInvalid").title = e;
+            valid = false;
+          }
 
-                            <h2><a href='./'>JavaScript Tools</a> - Regular Expressions</h2>
+          document.getElementById("imgValid").style.display = valid
+            ? ""
+            : "none";
+          document.getElementById("imgInvalid").style.display = valid
+            ? "none"
+            : "";
+        }
+      }
+    </script>
+    <style type="text/css">
+      textarea {
+        width: 800px;
+        resize: vertical;
+      }
+    </style>
+  </head>
 
-							<p>Input:<br />
-							<textarea id='txtSource' spellcheck='false' cols='80' rows='20'></textarea>
-							</p>
+  <body>
+    <div id="Layer0">
+      <div id="Layer1">
+        <div id="Layer2">
+          <div id="Layer3">
+            <div id="Layer4">
+              <h1>
+                <a href="../"
+                  ><img
+                    src="../styles/rdgreen.dev/rich@rdgreen.dev.png"
+                    alt="rich&#64;rdgreen.dev"
+                    title="rich&#64;rdgreen.dev"
+                /></a>
+              </h1>
 
-							<p>Replace:<br />
-							<textarea id='txtReplace' spellcheck='false' onblur='checkRegExp();' cols='80' rows='4'></textarea><img src='/styles/rdgreen.dev/green_tick.png' alt='valid' width='16' height='16' id='imgValid' style='display:none;margin-left:5px' /><img src='/styles/rdgreen.dev/red_x.png' alt='invalid' width='16' height='16' id='imgInvalid' style='display:none;margin-left:5px' />
-							</p>
+              <h2><a href="./">JavaScript Tools</a> - Regular Expressions</h2>
 
-							<p>With:<br />
-							<textarea id='txtWith' spellcheck='false' cols='80' rows='4'></textarea>
-							</p>
-							
-							<p>
-							<input type='checkbox' id='chkMultiline' checked='checked'> <label for='chkMultiline'>Multiline Regex</label> <em>(each input line is evaluated individually)</em>
-							<br />
-							<input type='checkbox' id='chkUnescapeText' checked='checked'> <label for='chkUnescapeText'>Unescape 'with' text</label> <em>(e.g. replace \t or \n with tabs and new-line characters)</em>
-							<br /><br />
-							<button onclick='doRegexReplace();'>Replace</button>
-							</p>
+              <p>
+                Input:<br />
+                <textarea
+                  id="txtSource"
+                  spellcheck="false"
+                  cols="80"
+                  rows="20"
+                ></textarea>
+              </p>
 
-							<p>Output:<br />
-							<textarea id='txtDestination' spellcheck='false' cols='80' rows='20'></textarea>
-							</p>
-				
-                        </div>
+              <p>
+                Replace:<br />
+                <textarea
+                  id="txtReplace"
+                  spellcheck="false"
+                  onblur="checkRegExp();"
+                  cols="80"
+                  rows="4"
+                ></textarea
+                ><img
+                  src="/styles/rdgreen.dev/green_tick.png"
+                  alt="valid"
+                  width="16"
+                  height="16"
+                  id="imgValid"
+                  style="display: none; margin-left: 5px"
+                /><img
+                  src="/styles/rdgreen.dev/red_x.png"
+                  alt="invalid"
+                  width="16"
+                  height="16"
+                  id="imgInvalid"
+                  style="display: none; margin-left: 5px"
+                />
+              </p>
 
-                        <div id='Footer0'>
-                            <div id='Footer1'>
-                                <div id='Footer2'>
+              <p>
+                With:<br />
+                <textarea
+                  id="txtWith"
+                  spellcheck="false"
+                  cols="80"
+                  rows="4"
+                ></textarea>
+              </p>
 
-                                    <hr />
+              <p>
+                <input type="checkbox" id="chkMultiline" checked="checked" />
+                <label for="chkMultiline">Multiline Regex</label>
+                <em>(each input line is evaluated individually)</em>
+                <br />
+                <input type="checkbox" id="chkUnescapeText" checked="checked" />
+                <label for="chkUnescapeText">Unescape 'with' text</label>
+                <em
+                  >(e.g. replace \t or \n with tabs and new-line characters)</em
+                >
+                <br /><br />
+                <button onclick="doRegexReplace();">Replace</button>
+              </p>
 
-                                    <p>
-
-                                        Copyright &copy; <script>document.write(new Date().getFullYear())</script> Richard Green.
-                                        <br />
-
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+              <p>
+                Output:<br />
+                <textarea
+                  id="txtDestination"
+                  spellcheck="false"
+                  cols="80"
+                  rows="20"
+                ></textarea>
+              </p>
             </div>
+
+            <div id="Footer0">
+              <div id="Footer1">
+                <div id="Footer2">
+                  <hr />
+
+                  <p>
+                    Copyright &copy;
+                    <script>
+                      document.write(new Date().getFullYear());
+                    </script>
+                    Richard Green.
+                    <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-
-    </body>
-
+      </div>
+    </div>
+  </body>
 </html>

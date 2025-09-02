@@ -1,121 +1,196 @@
 <!DOCTYPE html>
 <html>
-    <head>
-		<meta charset="UTF-8">
-        <title>JavaScript Tools</title>
-        <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
-        <script type="text/javascript" src="../js/Debug.js"></script>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Tools</title>
+    <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
+    <script type="text/javascript" src="../js/Debug.js"></script>
+  </head>
 
-    <body>
+  <body>
+    <div id="Layer0">
+      <div id="Layer1">
+        <div id="Layer2">
+          <div id="Layer3">
+            <div id="Layer4">
+              <h1>
+                <a href="../"
+                  ><img
+                    src="../styles/rdgreen.dev/rich@rdgreen.dev.png"
+                    alt="rich&#64;rdgreen.dev"
+                    title="rich&#64;rdgreen.dev"
+                /></a>
+              </h1>
 
-        <div id='Layer0'>
-            <div id='Layer1'>
-                <div id='Layer2'>
-                    <div id='Layer3'>
-                        <div id='Layer4'>
+              <h2><a href="./">JavaScript Tools</a> - Debug</h2>
 
-                            <h1><a href='../'><img src='../styles/rdgreen.dev/rich@rdgreen.dev.png' alt='rich&#64;rdgreen.dev' title='rich&#64;rdgreen.dev' /></a></h1>
+              <div class="narrow">
+                <p style="text-align: right">
+                  <strong>11<sup>th</sup> April 2009</strong>
+                </p>
 
-                            <h2><a href='./'>JavaScript Tools</a> - Debug</h2>
+                <p>
+                  Ok so here's a tool I've had in the works for some years now
+                  which I hope will be useful to the web developers amongst you.
+                  It's primarily designed for development, as the name should
+                  imply, and allows for rapid development and testing of
+                  JavaScript and CSS.
+                </p>
 
-				<div class='narrow'>
+                <p>
+                  I realise this is quite a long article, so
+                  <a href="#" onclick="Debug.ShowWindow(); return false;"
+                    >if you're too eager</a
+                  >, just hit the back-tick key under escape. Evaluate 'window',
+                  too. Just for fun ;-)
+                </p>
 
-					<p style='text-align: right;'><strong>11<sup>th</sup> April 2009</strong></p>
+                <p>
+                  Now! If you adhere to the principle of code/style/content
+                  separation by placing all your CSS and JavaScript in external
+                  files, this should make your lives easier, it certainly does
+                  for me. &ldquo;How is that?&rdquo; I hear you ask. Well if,
+                  like me, you spend most of your time editing a CSS file,
+                  saving it, going to your browser, pressing F5 to refresh (or,
+                  to be safe, CTRL+F5), viewing your changes then repeat, then
+                  that is fine for most scenarios. But what if you're developing
+                  a web application that has lots of dynamic content brought in
+                  by ajax? Well usually it means going through the extra work of
+                  recalling the ajax method, with potential database hits thrown
+                  into the mix. In other words, this can be a real bottleneck as
+                  simple CSS changes can take 5-10 seconds per tweak
+                </p>
 
-					<p>Ok so here's a tool I've had in the works for some years now which I hope will be useful to the web developers amongst you.
-					It's primarily designed for development, as the name should imply, and allows for rapid development and testing of JavaScript and CSS.</p>
+                <p>
+                  Well a number of possibilities occurred to me. A nice gui for
+                  editing CSS changes by selecting html elements and adjusting
+                  the rules would be swell. Something like the way
+                  <a href="http://getfirebug.com/">Firebug</a> does. The
+                  downside of the Firebug approach is that changes get lost and
+                  you end up having to replicate the changes in your original
+                  source anyway. Great for playing around with, but anything
+                  more is painful.
+                </p>
 
-					<p>I realise this is quite a long article, so <a href='#' onclick='Debug.ShowWindow(); return false;'>if you're too eager</a>, just hit the back-tick key under escape. Evaluate 'window', too. Just for fun ;-)</p>
-	
-					<p>Now! If you adhere to the principle of code/style/content separation by placing all your CSS and JavaScript in external files, this
-					should make your lives easier, it certainly does for me. &ldquo;How is that?&rdquo; I hear you ask. Well if, like me, you spend most
-					of your time editing a CSS file, saving it, going to your browser, pressing F5 to refresh (or, to be safe, CTRL+F5), viewing your changes
-					then repeat, then that is fine for most scenarios. But what if you're developing a web application that has lots of dynamic content
-					brought in by ajax? Well usually it means going through the extra work of recalling the ajax method, with potential database hits thrown
-					into the mix. In other words, this can be a real bottleneck as simple CSS changes can take 5-10 seconds per tweak</p>
-	
-					<p>Well a number of possibilities occurred to me. A nice gui for editing CSS changes by selecting html elements and adjusting the rules
-					would be swell. Something like the way <a href='http://getfirebug.com/'>Firebug</a> does. The downside of the Firebug approach is that
-					changes get lost and you end up having to replicate the changes in your original source anyway. Great for playing around with, but anything
-					more is painful.</p>
-	
-					<p>So I thought that an enhanced version of that would be neat; something that keeps track of your changes and when you're fully happy
-					with it, you can simply export all the changed files. Still, implementing that would be a fearsome task.</p>
-	
-					<p>Then the obvious hit me in the face: why not just add the ability to <em>just refresh the CSS files themselves</em>? Well happily
-					this approach was very simple to implement by extending my <a href='../js/Debug.js'>debug.js</a> class.</p>
-	
-					<p>So, after a whirlwind few hours of development, the following four functions have been added that make for a nice
-					refreshing-without-refreshing approach to JavaScript and CSS development:</p>
-	
-					<ul>
-						<li>List JavaScript files</li>
-						<li>Refresh JavaScript files</li>
-						<li>List CSS files</li>
-						<li>Refresh CSS files</li>
-					</ul>
+                <p>
+                  So I thought that an enhanced version of that would be neat;
+                  something that keeps track of your changes and when you're
+                  fully happy with it, you can simply export all the changed
+                  files. Still, implementing that would be a fearsome task.
+                </p>
 
-					<p>I also threw in a quick cookie lister, free of charge naturally.</p>
+                <p>
+                  Then the obvious hit me in the face: why not just add the
+                  ability to <em>just refresh the CSS files themselves</em>?
+                  Well happily this approach was very simple to implement by
+                  extending my <a href="../js/Debug.js">debug.js</a> class.
+                </p>
 
-					<p>Anyway, I hope you find those functions useful. Aside from those new functions, the original <a href='../js/Debug.js'>Debug.js</a> class
-					was a basic debug message logging system. It contains the usual methods for writing errors, warnings or trace statements to the log itself
-					(which is made visible using the back-tick key - the one under the escape key - go on, give it a try!):</p>
+                <p>
+                  So, after a whirlwind few hours of development, the following
+                  four functions have been added that make for a nice
+                  refreshing-without-refreshing approach to JavaScript and CSS
+                  development:
+                </p>
 
-					<dl>
-						<dt>Debug.Error(value, [title])</dt>
-						<dd>Creates an error window containing 'value'. Background colour is reddish.</dd>
-						
-						<dt>Debug.Warning(value, [title])</dt>
-						<dd>Creates an warning window containing 'value'. Background colour is yellow.</dd>
-						
-						<dt>Debug.Info(value, [title])</dt>
-						<dd>Creates an info window containing 'value'. Background colour is green.</dd>
-						
-						<dt>Debug.Write(value, [title])</dt>
-						<dd>Creates a debug box containing 'value'. Background colour is pale yellow</dd>
-						
-						<dt>Debug.InspectObject(obj, [title], [class])</dt>
-						<dd>Creates an object browser (tree view of objects contents). Class is the CSS class applied to the entry.</dd>
-						
-						<dt>Debug.Xml(sXml)</dt>
-						<dd>Pass this an xml string to display the xml nicely formatted in a debug window.</dd>
-					</dl>
+                <ul>
+                  <li>List JavaScript files</li>
+                  <li>Refresh JavaScript files</li>
+                  <li>List CSS files</li>
+                  <li>Refresh CSS files</li>
+                </ul>
 
-					<h3>Bookmarklet - Debug any page!</h3>
+                <p>
+                  I also threw in a quick cookie lister, free of charge
+                  naturally.
+                </p>
 
-					<p>If ever you want an easy way to inspect any page on the internet, why not try this handy bookmarklet. Just drag it into your favourites
-					and click it whenever you want access to the console:</p>
+                <p>
+                  Anyway, I hope you find those functions useful. Aside from
+                  those new functions, the original
+                  <a href="../js/Debug.js">Debug.js</a> class was a basic debug
+                  message logging system. It contains the usual methods for
+                  writing errors, warnings or trace statements to the log itself
+                  (which is made visible using the back-tick key - the one under
+                  the escape key - go on, give it a try!):
+                </p>
 
-					<a class="bookmarklet" href="javascript:(function(){var s=document.createElement('script');s.type='text/javascript';s.src='http://rdgreen.dev/js/Debug.js';document.body.appendChild(s);})()">Debug Page</a>
+                <dl>
+                  <dt>Debug.Error(value, [title])</dt>
+                  <dd>
+                    Creates an error window containing 'value'. Background
+                    colour is reddish.
+                  </dd>
 
-					<p>Thanks for reading!<br />--Richard</p>
-				</div>
-                        </div>
+                  <dt>Debug.Warning(value, [title])</dt>
+                  <dd>
+                    Creates an warning window containing 'value'. Background
+                    colour is yellow.
+                  </dd>
 
-                        <div id='Footer0'>
-                            <div id='Footer1'>
-                                <div id='Footer2'>
+                  <dt>Debug.Info(value, [title])</dt>
+                  <dd>
+                    Creates an info window containing 'value'. Background colour
+                    is green.
+                  </dd>
 
-                                    <hr />
+                  <dt>Debug.Write(value, [title])</dt>
+                  <dd>
+                    Creates a debug box containing 'value'. Background colour is
+                    pale yellow
+                  </dd>
 
-                                    <p>
+                  <dt>Debug.InspectObject(obj, [title], [class])</dt>
+                  <dd>
+                    Creates an object browser (tree view of objects contents).
+                    Class is the CSS class applied to the entry.
+                  </dd>
 
-                                        Copyright &copy; <script>document.write(new Date().getFullYear())</script> Richard Green.
-                                        <br />
+                  <dt>Debug.Xml(sXml)</dt>
+                  <dd>
+                    Pass this an xml string to display the xml nicely formatted
+                    in a debug window.
+                  </dd>
+                </dl>
 
-                                    </p>
+                <h3>Bookmarklet - Debug any page!</h3>
 
-                                </div>
-                            </div>
-                        </div>
+                <p>
+                  If ever you want an easy way to inspect any page on the
+                  internet, why not try this handy bookmarklet. Just drag it
+                  into your favourites and click it whenever you want access to
+                  the console:
+                </p>
 
-                    </div>
-                </div>
+                <a
+                  class="bookmarklet"
+                  href="javascript:(function(){var s=document.createElement('script');s.type='text/javascript';s.src='http://rdgreen.dev/js/Debug.js';document.body.appendChild(s);})()"
+                  >Debug Page</a
+                >
+
+                <p>Thanks for reading!<br />--Richard</p>
+              </div>
             </div>
+
+            <div id="Footer0">
+              <div id="Footer1">
+                <div id="Footer2">
+                  <hr />
+
+                  <p>
+                    Copyright &copy;
+                    <script>
+                      document.write(new Date().getFullYear());
+                    </script>
+                    Richard Green.
+                    <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-
-    </body>
-
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Text Processor</title>
+    <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
+    <script type="text/javascript" src="/js/Debug.js"></script>
+    <script type="text/javascript" src="/js/jsonHighlight.js"></script>
+    <style>
+      .button-group {
+        margin: 10px 0;
+      }
+      button {
+        margin-right: 5px;
+      }
+      input[type="text"] {
+        padding: 5px;
+        margin-right: 5px;
+      }
+      #text_area {
+        font-size: 11pt;
+        font-family: Consolas, Monospace;
+        width: 910px;
+        padding: 5px;
+        min-height: 800px;
+      }
+    </style>
+    <script type="text/javascript">
+      // Utility function to split text into lines
+      function getLines(text) {
+        return text.split(/\r?\n/);
+      }
+
+      // Sort lines alphabetically (case insensitive)
+      function sortText() {
+        var textarea = document.getElementById("text_area");
+        let lines = getLines(textarea.value);
+        lines.sort(function (a, b) {
+          return a.toLowerCase().localeCompare(b.toLowerCase());
+        });
+        textarea.value = lines.join("\n");
+      }
+
+      // Remove duplicate lines
+      function removeDuplicates() {
+        var textarea = document.getElementById("text_area");
+        let lines = getLines(textarea.value);
+        let uniqueLines = [...new Set(lines)];
+        textarea.value = uniqueLines.join("\n");
+      }
+
+      // Remove blank lines
+      function removeBlankLines() {
+        var textarea = document.getElementById("text_area");
+        let lines = getLines(textarea.value);
+        let nonBlankLines = lines.filter(function (line) {
+          return line.trim() !== "";
+        });
+        textarea.value = nonBlankLines.join("\n");
+      }
+
+      // Convert text to lowercase
+      function toLowerCase() {
+        var textarea = document.getElementById("text_area");
+        textarea.value = textarea.value.toLowerCase();
+      }
+
+      // Convert text to uppercase
+      function toUpperCase() {
+        var textarea = document.getElementById("text_area");
+        textarea.value = textarea.value.toUpperCase();
+      }
+
+      // Convert text to titlecase (first letter of each word capitalized)
+      function toTitleCase() {
+        var textarea = document.getElementById("text_area");
+        textarea.value = textarea.value
+          .toLowerCase()
+          .replace(/\b\w/g, function (match) {
+            return match.toUpperCase();
+          });
+      }
+
+      // Perform search and replace on the text
+      function searchReplace() {
+        var textarea = document.getElementById("text_area");
+        var searchTerm = document.getElementById("search_term").value;
+        var replaceTerm = document.getElementById("replace_term").value;
+        if (searchTerm === "") return;
+        var regex = new RegExp(searchTerm, "g");
+        textarea.value = textarea.value.replace(regex, replaceTerm);
+      }
+
+      // Trim whitespace from each line
+      function trimLines() {
+        var textarea = document.getElementById("text_area");
+        let lines = getLines(textarea.value);
+        let trimmedLines = lines.map(function (line) {
+          return line.trim();
+        });
+        textarea.value = trimmedLines.join("\n");
+      }
+    </script>
+  </head>
+  <body>
+    <div id="Layer0">
+      <div id="Layer1">
+        <div id="Layer2">
+          <div id="Layer3">
+            <div id="Layer4">
+              <h1>
+                <a href="../">
+                  <img
+                    src="../styles/rdgreen.dev/rich@rdgreen.dev.png"
+                    alt="rich&#64;rdgreen.dev"
+                    title="rich&#64;rdgreen.dev"
+                  />
+                </a>
+              </h1>
+
+              <h2><a href="./">JavaScript Tools</a> - Text Processor</h2>
+
+              <div class="button-group">
+                <button onclick="sortText()">Sort Lines</button>
+                <button onclick="removeDuplicates()">
+                  Remove Duplicate Lines
+                </button>
+                <button onclick="removeBlankLines()">Remove Blank Lines</button>
+                <button onclick="toLowerCase()">Lowercase</button>
+                <button onclick="toUpperCase()">Uppercase</button>
+                <button onclick="toTitleCase()">Titlecase</button>
+                <button onclick="trimLines()">Trim Lines</button>
+              </div>
+              <div class="button-group">
+                <input type="text" id="search_term" placeholder="Search" />
+                <input type="text" id="replace_term" placeholder="Replace" />
+                <button onclick="searchReplace()">Search/Replace</button>
+              </div>
+              <textarea
+                id="text_area"
+                placeholder="Enter your text here..."
+              ></textarea>
+            </div>
+            <div id="Footer0">
+              <div id="Footer1">
+                <div id="Footer2">
+                  <hr />
+
+                  <p>
+                    Copyright &copy;
+                    <script>
+                      document.write(new Date().getFullYear());
+                    </script>
+                    Richard Green.
+                    <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

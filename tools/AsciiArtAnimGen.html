@@ -1,268 +1,249 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>AsciiArt Animation Generator</title>
-		<style type="text/css">
-			input.button
-			{
-				width: 100px;
-			}
-			input.text
-			{
-				width: 60px;
-			}
-			#saved_movie.hidden
-			{
-				display: none;
-			}
-			#prev, #next
-			{
-				display: none;
-			}
-		</style>
-		<script type="text/javascript">
-			<!--
+  <head>
+    <meta charset="UTF-8" />
+    <title>AsciiArt Animation Generator</title>
+    <style type="text/css">
+      input.button {
+        width: 100px;
+      }
+      input.text {
+        width: 60px;
+      }
+      #saved_movie.hidden {
+        display: none;
+      }
+      #prev,
+      #next {
+        display: none;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
 
-			var frames = new Array();
-			var frameDelays = new Array();
-			var crntFrame = 0;
+      var frames = new Array();
+      var frameDelays = new Array();
+      var crntFrame = 0;
 
-			function addEvent(obj, evType, fn)
-			{
-				if (obj.addEventListener)
-				{
-					obj.addEventListener(evType, fn, false);
-					return true;
-				}
-				else if (obj.attachEvent)
-				{
-					var r = obj.attachEvent("on"+evType, fn);
-					return r;
-				}
-				else
-				{
-					return false;
-				}
-			}
+      function addEvent(obj, evType, fn) {
+        if (obj.addEventListener) {
+          obj.addEventListener(evType, fn, false);
+          return true;
+        } else if (obj.attachEvent) {
+          var r = obj.attachEvent("on" + evType, fn);
+          return r;
+        } else {
+          return false;
+        }
+      }
 
-			function btnFirst_OnClick()
-			{
-				saveCurrentFrame();
-				crntFrame = 0;
-				drawFrames();
-			}
+      function btnFirst_OnClick() {
+        saveCurrentFrame();
+        crntFrame = 0;
+        drawFrames();
+      }
 
-			function btnPrev_OnClick()
-			{
-				saveCurrentFrame();
-				crntFrame -= 1;
-				if (crntFrame < 0) crntFrame = 0;
-				drawFrames();
-			}
+      function btnPrev_OnClick() {
+        saveCurrentFrame();
+        crntFrame -= 1;
+        if (crntFrame < 0) crntFrame = 0;
+        drawFrames();
+      }
 
-			function btnNext_OnClick()
-			{
-				saveCurrentFrame();
-				crntFrame++;
-				if (crntFrame >= frames.length) crntFrame = frames.length - 1;
-				drawFrames();
-			}
+      function btnNext_OnClick() {
+        saveCurrentFrame();
+        crntFrame++;
+        if (crntFrame >= frames.length) crntFrame = frames.length - 1;
+        drawFrames();
+      }
 
-			function btnLast_OnClick()
-			{
-				saveCurrentFrame();
-				crntFrame = frames.length - 1;
-				drawFrames();
-			}
+      function btnLast_OnClick() {
+        saveCurrentFrame();
+        crntFrame = frames.length - 1;
+        drawFrames();
+      }
 
-			function btnDel_OnClick()
-			{
-				if (frames.length == 1)
-				{
-					frames[0] = "";
-					frameDelays[0] = 0;
-					document.getElementById("crnt").value = "";
-					return;
-				}
-				frames.splice(crntFrame,1);
-				frameDelays.splice(crntFrame,1);
-				if (crntFrame >= frames.length) crntFrame = frames.length - 1;
-				drawFrames();
-			}
+      function btnDel_OnClick() {
+        if (frames.length == 1) {
+          frames[0] = "";
+          frameDelays[0] = 0;
+          document.getElementById("crnt").value = "";
+          return;
+        }
+        frames.splice(crntFrame, 1);
+        frameDelays.splice(crntFrame, 1);
+        if (crntFrame >= frames.length) crntFrame = frames.length - 1;
+        drawFrames();
+      }
 
-			function btnNew_OnClick()
-			{
-				saveCurrentFrame();
-				var newFrameData = "";
-				if (document.getElementById("cbCopy").checked == true)
-				{
-					newFrameData = document.getElementById("crnt").value
-				}
-				var newFrameDelay = parseInt(document.getElementById("txtDefaultFrameDelay").value, 10);
-				if (crntFrame == frames.length - 1)
-				{
-					frames.push(newFrameData);
-					frameDelays.push(newFrameDelay);
-				}
-				else
-				{
-					frames.splice(crntFrame+1, 0, newFrameData);
-					frameDelays.splice(crntFrame+1, 0, newFrameDelay);
-				}
-				document.getElementById("crnt").focus();
-				btnNext_OnClick();
-			}
+      function btnNew_OnClick() {
+        saveCurrentFrame();
+        var newFrameData = "";
+        if (document.getElementById("cbCopy").checked == true) {
+          newFrameData = document.getElementById("crnt").value;
+        }
+        var newFrameDelay = parseInt(
+          document.getElementById("txtDefaultFrameDelay").value,
+          10
+        );
+        if (crntFrame == frames.length - 1) {
+          frames.push(newFrameData);
+          frameDelays.push(newFrameDelay);
+        } else {
+          frames.splice(crntFrame + 1, 0, newFrameData);
+          frameDelays.splice(crntFrame + 1, 0, newFrameDelay);
+        }
+        document.getElementById("crnt").focus();
+        btnNext_OnClick();
+      }
 
-			function btnGo_OnClick()
-			{
-				saveCurrentFrame();
-				crntFrame = parseInt(document.getElementById("txtFrame").value, 10) - 1;
-				if (crntFrame >= frames.length) crntFrame = frames.length - 1;
-				if (crntFrame < 0) crntFrame = 0;
-				drawFrames();
-			}
+      function btnGo_OnClick() {
+        saveCurrentFrame();
+        crntFrame = parseInt(document.getElementById("txtFrame").value, 10) - 1;
+        if (crntFrame >= frames.length) crntFrame = frames.length - 1;
+        if (crntFrame < 0) crntFrame = 0;
+        drawFrames();
+      }
 
-			function btnSave_OnClick()
-			{
-				saveCurrentFrame();
-				var saved_movie = document.getElementById("saved_movie");
-				saved_movie.value = "";
-				for (var i in frames)
-				{
-					saved_movie.value += "addFrame('" + encodeFrameData(frames[i]) + "', " + frameDelays[i] + ");\n";
-				}
-				saved_movie.className = "";
-			}
+      function btnSave_OnClick() {
+        saveCurrentFrame();
+        var saved_movie = document.getElementById("saved_movie");
+        saved_movie.value = "";
+        for (var i in frames) {
+          saved_movie.value +=
+            "addFrame('" +
+            encodeFrameData(frames[i]) +
+            "', " +
+            frameDelays[i] +
+            ");\n";
+        }
+        saved_movie.className = "";
+      }
 
-			function drawFrames()
-			{
-				if (crntFrame == 0)
-				{
-					document.getElementById("prev").value = "\n\n\n\n\t\t\t\t** START **";
-				}
-				else
-				{
-					document.getElementById("prev").value = frames[crntFrame-1];
-				}
+      function drawFrames() {
+        if (crntFrame == 0) {
+          document.getElementById("prev").value = "\n\n\n\n\t\t\t\t** START **";
+        } else {
+          document.getElementById("prev").value = frames[crntFrame - 1];
+        }
 
-				document.getElementById("crnt").value = frames[crntFrame];
-				document.getElementById("txtFrameDelay").value = frameDelays[crntFrame];
+        document.getElementById("crnt").value = frames[crntFrame];
+        document.getElementById("txtFrameDelay").value = frameDelays[crntFrame];
 
-				if (crntFrame == frames.length - 1)
-				{
-					document.getElementById("next").value = "\n\n\n\n\t\t\t\t*** END ***";
-				}
-				else
-				{
-					document.getElementById("next").value = frames[crntFrame+1];
-				}
+        if (crntFrame == frames.length - 1) {
+          document.getElementById("next").value = "\n\n\n\n\t\t\t\t*** END ***";
+        } else {
+          document.getElementById("next").value = frames[crntFrame + 1];
+        }
 
-				document.getElementById("txtFrame").value = crntFrame + 1;
-				document.getElementById("txtTotalFrames").value = frames.length;
-			}
+        document.getElementById("txtFrame").value = crntFrame + 1;
+        document.getElementById("txtTotalFrames").value = frames.length;
+      }
 
-			function saveCurrentFrame()
-			{
-				frames[crntFrame] = document.getElementById("crnt").value;
-				frameDelays[crntFrame] = document.getElementById("txtFrameDelay").value;
-			}
+      function saveCurrentFrame() {
+        frames[crntFrame] = document.getElementById("crnt").value;
+        frameDelays[crntFrame] = document.getElementById("txtFrameDelay").value;
+      }
 
-			function encodeFrameData(frame)
-			{
-				frame = frame.replace(/\\/g, '\\\\');
-				frame = frame.replace(/'/g, '\\\'');
-				frame = frame.replace(/(\n|\r\n)/g, '\\n');
-				frame = frame.replace(/\s+\\n/g, '\\n');
-				frame = frame.replace(/\s+$/, '');
-				return frame;
-			}
+      function encodeFrameData(frame) {
+        frame = frame.replace(/\\/g, "\\\\");
+        frame = frame.replace(/'/g, "\\'");
+        frame = frame.replace(/(\n|\r\n)/g, "\\n");
+        frame = frame.replace(/\s+\\n/g, "\\n");
+        frame = frame.replace(/\s+$/, "");
+        return frame;
+      }
 
-			function init()
-			{
-				addEvent(document.getElementById("btnFirst"), "click", btnFirst_OnClick);
-				addEvent(document.getElementById("btnPrev"), "click", btnPrev_OnClick);
-				addEvent(document.getElementById("btnNext"), "click", btnNext_OnClick);
-				addEvent(document.getElementById("btnLast"), "click", btnLast_OnClick);
-				addEvent(document.getElementById("btnSave"), "click", btnSave_OnClick);
-				addEvent(document.getElementById("btnDel"), "click", btnDel_OnClick);
-				addEvent(document.getElementById("btnNew"), "click", btnNew_OnClick);
-				addEvent(document.getElementById("btnGo"), "click", btnGo_OnClick);
-				addEvent(document.getElementById("btnSave"), "click", btnSave_OnClick);
+      function init() {
+        addEvent(
+          document.getElementById("btnFirst"),
+          "click",
+          btnFirst_OnClick
+        );
+        addEvent(document.getElementById("btnPrev"), "click", btnPrev_OnClick);
+        addEvent(document.getElementById("btnNext"), "click", btnNext_OnClick);
+        addEvent(document.getElementById("btnLast"), "click", btnLast_OnClick);
+        addEvent(document.getElementById("btnSave"), "click", btnSave_OnClick);
+        addEvent(document.getElementById("btnDel"), "click", btnDel_OnClick);
+        addEvent(document.getElementById("btnNew"), "click", btnNew_OnClick);
+        addEvent(document.getElementById("btnGo"), "click", btnGo_OnClick);
+        addEvent(document.getElementById("btnSave"), "click", btnSave_OnClick);
 
-				if (!Array.prototype.splice)
-				{
-				    Array.prototype.splice = function(iStart, iLength)
-				    {
-				        if (iLength < 0) iLength = 0;
+        if (!Array.prototype.splice) {
+          Array.prototype.splice = function (iStart, iLength) {
+            if (iLength < 0) iLength = 0;
 
-				        var aInsert = new Array();
-				        if (arguments.length > 2)
-				        {
-				            for (var i=2; i<arguments.length; i++)
-				            {
-				                aInsert.push(arguments[i]);
-				            }
-				        }
+            var aInsert = new Array();
+            if (arguments.length > 2) {
+              for (var i = 2; i < arguments.length; i++) {
+                aInsert.push(arguments[i]);
+              }
+            }
 
-				        var aHead = this.subarray(0, iStart);
-				        var aDelete = this.subarray(iStart, iLength);
-				        var aTail = this.subarray(iStart + iLength);
+            var aHead = this.subarray(0, iStart);
+            var aDelete = this.subarray(iStart, iLength);
+            var aTail = this.subarray(iStart + iLength);
 
-				        var aNew = aHead.concat(aInsert, aTail);
+            var aNew = aHead.concat(aInsert, aTail);
 
-				        // Rebuild yourself
-				        this.length = 0;
-				        for (var i=0; i < aNew.length; i++)
-				        {
-				            this.push(aNew[i]);
-				        }
+            // Rebuild yourself
+            this.length = 0;
+            for (var i = 0; i < aNew.length; i++) {
+              this.push(aNew[i]);
+            }
 
-				        return aDelete;
-				    };
-				}
+            return aDelete;
+          };
+        }
 
-				// Create the first frame
-				frames.push("");
-				frameDelays.push(parseInt(document.getElementById("txtDefaultFrameDelay").value, 10));
-				drawFrames();
-			}
+        // Create the first frame
+        frames.push("");
+        frameDelays.push(
+          parseInt(document.getElementById("txtDefaultFrameDelay").value, 10)
+        );
+        drawFrames();
+      }
 
-			addEvent(window, "load", init);
+      addEvent(window, "load", init);
 
-			-->
-		</script>
-	</head>
+      -->
+    </script>
+  </head>
 
-	<body>
-		<h1>Ascii Art Animation Generator</h1>
-		<textarea id="prev" rows="20" cols="80" readonly="readonly"></textarea>
-		<textarea id="crnt" rows="20" cols="80"></textarea>
-		<span>Frame Delay:</span>
-		<input type="text" class="text" id="txtFrameDelay" value="" />
-		<textarea id="next" rows="20" cols="80" readonly="readonly"></textarea>
-		<br /><br />
-		<input type="button" class="button" id="btnFirst" value="|&lt;" />
-		<input type="button" class="button" id="btnPrev" value="&lt;" />
-		<input type="button" class="button" id="btnNext" value="&gt;" />
-		<input type="button" class="button" id="btnLast" value="&gt;|" />
-		<input type="button" class="button" id="btnDel" value="[del]" />
-		<input type="button" class="button" id="btnNew" value="&gt;*" />
-		<input type="checkbox" class="checkbox" id="cbCopy" checked="checked" />
-		<label for="cbCopy">Copy current frame when creating new frame</label>
-		<br /><br />
-		<span>Frame:</span>
-		<input type="text" class="text" id="txtFrame" value="1" />
-		<span>of</span>
-		<input type="text" class="text" id="txtTotalFrames" readonly="readonly" value="1" />
-		<input type="button" class="button" id="btnGo" value="Go" />
-		<br /><br />
-		<span>Default Frame Delay:</span>
-		<input type="text" class="text" id="txtDefaultFrameDelay" value="250" />
-		<br /><br />
-		<input type="button" class="button" id="btnSave" value="Save" />
-		<br /><br />
-		<textarea id="saved_movie" class="hidden" rows="10" cols="80"></textarea>
-	</body>
-
+  <body>
+    <h1>Ascii Art Animation Generator</h1>
+    <textarea id="prev" rows="20" cols="80" readonly="readonly"></textarea>
+    <textarea id="crnt" rows="20" cols="80"></textarea>
+    <span>Frame Delay:</span>
+    <input type="text" class="text" id="txtFrameDelay" value="" />
+    <textarea id="next" rows="20" cols="80" readonly="readonly"></textarea>
+    <br /><br />
+    <input type="button" class="button" id="btnFirst" value="|&lt;" />
+    <input type="button" class="button" id="btnPrev" value="&lt;" />
+    <input type="button" class="button" id="btnNext" value="&gt;" />
+    <input type="button" class="button" id="btnLast" value="&gt;|" />
+    <input type="button" class="button" id="btnDel" value="[del]" />
+    <input type="button" class="button" id="btnNew" value="&gt;*" />
+    <input type="checkbox" class="checkbox" id="cbCopy" checked="checked" />
+    <label for="cbCopy">Copy current frame when creating new frame</label>
+    <br /><br />
+    <span>Frame:</span>
+    <input type="text" class="text" id="txtFrame" value="1" />
+    <span>of</span>
+    <input
+      type="text"
+      class="text"
+      id="txtTotalFrames"
+      readonly="readonly"
+      value="1"
+    />
+    <input type="button" class="button" id="btnGo" value="Go" />
+    <br /><br />
+    <span>Default Frame Delay:</span>
+    <input type="text" class="text" id="txtDefaultFrameDelay" value="250" />
+    <br /><br />
+    <input type="button" class="button" id="btnSave" value="Save" />
+    <br /><br />
+    <textarea id="saved_movie" class="hidden" rows="10" cols="80"></textarea>
+  </body>
 </html>

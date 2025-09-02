@@ -1,71 +1,73 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Guids - Everyone loves Guids</title>
-		<link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
-		<script type='text/javascript' src='/js/Debug.js'></script>
-		<script type='text/javascript' src='/js/jsonFormat.js'></script>
-		<script type='text/javascript'>
-			var Guid = {
-				generateGuid: function () {
-					return 'xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                                           var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-                                           return v.toString(16);
-                                        });
-				}
-			};
-		</script>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Guids - Everyone loves Guids</title>
+    <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
+    <script type="text/javascript" src="/js/Debug.js"></script>
+    <script type="text/javascript" src="/js/jsonFormat.js"></script>
+    <script type="text/javascript">
+      var Guid = {
+        generateGuid: function () {
+          return "xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx".replace(
+            /[xy]/g,
+            function (c) {
+              var r = (Math.random() * 16) | 0,
+                v = c == "x" ? r : (r & 0x3) | 0x8;
+              return v.toString(16);
+            }
+          );
+        },
+      };
+    </script>
+  </head>
 
-    <body>
+  <body>
+    <div id="Layer0">
+      <div id="Layer1">
+        <div id="Layer2">
+          <div id="Layer3">
+            <div id="Layer4">
+              <h1>
+                <a href="../"
+                  ><img
+                    src="../styles/rdgreen.dev/rich@rdgreen.dev.png"
+                    alt="rich&#64;rdgreen.dev"
+                    title="rich&#64;rdgreen.dev"
+                /></a>
+              </h1>
 
-        <div id='Layer0'>
-            <div id='Layer1'>
-                <div id='Layer2'>
-                    <div id='Layer3'>
-                        <div id='Layer4'>
+              <h2><a href="./">JavaScript Tools</a> - Guids</h2>
 
-							<h1><a href='../'><img src='../styles/rdgreen.dev/rich@rdgreen.dev.png' alt='rich&#64;rdgreen.dev' title='rich&#64;rdgreen.dev' /></a></h1>
-
-                            <h2><a href='./'>JavaScript Tools</a> - Guids</h2>
-
-							<p>
-								Have some Guids!
-							</p>
-							<p>
-								<script type='text/javascript'>
-									for (var i = 0; i < 25; i++) {
-										document.writeln(Guid.generateGuid() + "<br />");
-									}
-								</script>
-							</p>
-
-                        </div>
-
-                        <div id='Footer0'>
-                            <div id='Footer1'>
-                                <div id='Footer2'>
-
-                                    <hr />
-
-                                    <p>
-
-                                        Copyright &copy; <script>document.write(new Date().getFullYear())</script> Richard Green.
-                                        <br />
-
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+              <p>Have some Guids!</p>
+              <p>
+                <script type="text/javascript">
+                  for (var i = 0; i < 25; i++) {
+                    document.writeln(Guid.generateGuid() + "<br />");
+                  }
+                </script>
+              </p>
             </div>
+
+            <div id="Footer0">
+              <div id="Footer1">
+                <div id="Footer2">
+                  <hr />
+
+                  <p>
+                    Copyright &copy;
+                    <script>
+                      document.write(new Date().getFullYear());
+                    </script>
+                    Richard Green.
+                    <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-
-    </body>
-
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,28 +1,24 @@
-.vcard
-{
-	width: 200px;
-	border: 1px solid #3030af;
-	margin: 4em auto;
-	font-family: verdana, arial, sans-serif;
-	font-size: 0.8125em;
+.vcard {
+  width: 200px;
+  border: 1px solid #3030af;
+  margin: 4em auto;
+  font-family: verdana, arial, sans-serif;
+  font-size: 0.8125em;
 }
 
-.vcard div
-{
-	margin: 5px;
+.vcard div {
+  margin: 5px;
 }
 
-.vcard .fn
-{
-	font-weight: bold;
-	color: #3030af;
-	background-color: #f0f0f9;
-	font-size: 1.25em;
-	padding: 5px;
-	margin: 0;
+.vcard .fn {
+  font-weight: bold;
+  color: #3030af;
+  background-color: #f0f0f9;
+  font-size: 1.25em;
+  padding: 5px;
+  margin: 0;
 }
 
-.email
-{
-	color: #3030af;
+.email {
+  color: #3030af;
 }
