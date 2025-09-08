@@ -102,6 +102,22 @@
         });
         textarea.value = trimmedLines.join("\n");
       }
+
+      function copyText() {
+        // Retrieve the text content
+        navigator.clipboard
+          .writeText(document.getElementById("text_area").value)
+          .then(() => {
+            const tick = document.getElementById("tick");
+            tick.style.display = "inline";
+            setTimeout(() => {
+              tick.style.display = "none";
+            }, 2500);
+          })
+          .catch((err) => {
+            console.error("Error copying text: ", err);
+          });
+      }
     </script>
   </head>
   <body>
@@ -137,6 +153,8 @@
                 <input type="text" id="search_term" placeholder="Search" />
                 <input type="text" id="replace_term" placeholder="Replace" />
                 <button onclick="searchReplace()">Search/Replace</button>
+                <button onclick="copyText()">Copy</button>
+                <span id="tick" style="display: none">✔️</span>
               </div>
               <textarea
                 id="text_area"
