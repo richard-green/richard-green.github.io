@@ -13,14 +13,13 @@
         json_out = document.getElementById(json_out);
         try {
           var matches = jsonHighlight.getMatches(JSON.parse(json_in.value));
-          json_out.innerHTML = matches
-            .map((m) => {
-              const span = document.createElement("span");
-              span.className = m.cls;
-              span.innerText = m.text;
-              return span;
-            })
-            .join("");
+          json_out.innerHTML = "";
+          for (const m of matches) {
+            const span = document.createElement("span");
+            span.className = m.cls;
+            span.innerText = m.text;
+            json_out.appendChild(span);
+          }
           error.innerText = "";
         } catch (ex) {
           error.innerText = ex;
