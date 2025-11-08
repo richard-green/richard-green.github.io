@@ -14,11 +14,16 @@
         try {
           var matches = jsonHighlight.getMatches(JSON.parse(json_in.value));
           json_out.innerHTML = matches
-            .map((m) => `<span class='${m.cls}'>${m.text}</span>`)
+            .map((m) => {
+              const span = document.createElement("span");
+              span.className = m.cls;
+              span.innerText = m.text;
+              return span;
+            })
             .join("");
-          error.innerHTML = "";
+          error.innerText = "";
         } catch (ex) {
-          error.innerHTML = ex;
+          error.innerText = ex;
         }
       }
 
