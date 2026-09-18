@@ -1,8 +1,9 @@
 /* ==UserStyle==
-@name         Reddit
-@updateURL    https://www.rdgreen.dev/stylus/Reddit.css
-@license      unlicense
-@preprocessor stylus
+@name           Reddit
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    Reddit
+@author         Richard Green
 ==/UserStyle== */
 
 @-moz-document domain("reddit.com") {

@@ -1,3 +1,11 @@
+/* ==UserStyle==
+@name           JSONView
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    JSONView
+@author         Richard Green
+==/UserStyle== */
+
 div#json
 {
   font-family: Consolas;

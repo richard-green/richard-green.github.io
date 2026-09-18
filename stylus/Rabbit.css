@@ -1,6 +1,0 @@
-@-moz-document regexp("https?://15below-rabmq\\d+\\.15below\\.inetu/.*") {
-table th, table td
-	{
-		font: 11px/11px "Segoe UI"
-	}
-}

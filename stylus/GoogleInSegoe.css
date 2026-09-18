@@ -1,3 +1,11 @@
+/* ==UserStyle==
+@name           Google In Segoe
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    Google In Segoe
+@author         Richard Green
+==/UserStyle== */
+
 @-moz-document domain("google.com"), domain("google.co.uk"), domain("blogspot.com"), domain("youtube.com"), domain("mail.google.com") {
   body,
   a,
