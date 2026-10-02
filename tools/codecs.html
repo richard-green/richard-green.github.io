@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>JavaScript Tools - Hashing &amp; Codecs</title>
     <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
     <script type="text/javascript" src="../js/base64.min.js"></script>
@@ -114,7 +115,7 @@
         var hex_calcs_output = document.getElementById("hex_calcs_output");
         hex_calcs_output.value = hexCalcOR(
           hex_calcs_input1.value,
-          hex_calcs_input2.value
+          hex_calcs_input2.value,
         );
       }
 
@@ -124,7 +125,7 @@
         var hex_calcs_output = document.getElementById("hex_calcs_output");
         hex_calcs_output.value = hexCalcAND(
           hex_calcs_input1.value,
-          hex_calcs_input2.value
+          hex_calcs_input2.value,
         );
       }
 
@@ -134,7 +135,7 @@
         var hex_calcs_output = document.getElementById("hex_calcs_output");
         hex_calcs_output.value = hexCalcXOR(
           hex_calcs_input1.value,
-          hex_calcs_input2.value
+          hex_calcs_input2.value,
         );
       }
       -->
@@ -234,7 +235,7 @@
                     id="rdoMD5"
                     value="MD5"
                     name="rdoOperation"
-                    onclick="setOperation('MD5');"
+                    onclick="setOperation('MD5')"
                     checked="checked"
                   /><label for="rdoMD5">MD5</label><br />
                   <input
@@ -242,42 +243,42 @@
                     id="rdoSHA256"
                     value="SHA256"
                     name="rdoOperation"
-                    onclick="setOperation('SHA256');"
+                    onclick="setOperation('SHA256')"
                   /><label for="rdoSHA256">SHA256</label><br />
                   <input
                     type="radio"
                     id="rdoBase64"
                     value="Base64"
                     name="rdoOperation"
-                    onclick="setOperation('Base64');"
+                    onclick="setOperation('Base64')"
                   /><label for="rdoBase64">Base 64</label><br />
                   <input
                     type="radio"
                     id="rdoASCIIToHex"
                     value="ASCIIToHex"
                     name="rdoOperation"
-                    onclick="setOperation('ASCIIToHex');"
+                    onclick="setOperation('ASCIIToHex')"
                   /><label for="rdoASCIIToHex">ASCII to Hex</label><br />
                   <input
                     type="radio"
                     id="rdoHexToBinary"
                     value="HexToBinary"
                     name="rdoOperation"
-                    onclick="setOperation('HexToBinary');"
+                    onclick="setOperation('HexToBinary')"
                   /><label for="rdoHexToBinary">Hex to Binary</label><br />
                   <input
                     type="radio"
                     id="rdoUriEncoding"
                     value="UriEncoding"
                     name="rdoOperation"
-                    onclick="setOperation('UriEncoding');"
+                    onclick="setOperation('UriEncoding')"
                   /><label for="rdoUriEncoding">URI Encoding</label><br />
                   <input
                     type="radio"
                     id="rdoLZW"
                     value="LZW"
                     name="rdoOperation"
-                    onclick="setOperation('LZW');"
+                    onclick="setOperation('LZW')"
                   /><label for="rdoLZW">LZW Compression</label><br />
                 </div>
 
@@ -294,11 +295,11 @@
                     style="resize: vertical"
                   ></textarea>
                   <div class="box" id="divActionButtons">
-                    <button id="btnLTR" onclick="actionLTR();">&gt;&gt;</button
+                    <button id="btnLTR" onclick="actionLTR()">&gt;&gt;</button
                     ><br />
                     <button
                       id="btnRTL"
-                      onclick="actionRTL();"
+                      onclick="actionRTL()"
                       disabled="disabled"
                     >
                       &lt;&lt;
@@ -343,25 +344,25 @@
               <input
                 type="button"
                 class="button"
-                onclick="bitCalcNOT();"
+                onclick="bitCalcNOT()"
                 value="NOT"
               />
               <input
                 type="button"
                 class="button"
-                onclick="bitCalcOR();"
+                onclick="bitCalcOR()"
                 value="OR"
               />
               <input
                 type="button"
                 class="button"
-                onclick="bitCalcAND();"
+                onclick="bitCalcAND()"
                 value="AND"
               />
               <input
                 type="button"
                 class="button"
-                onclick="bitCalcXOR();"
+                onclick="bitCalcXOR()"
                 value="XOR"
               />
             </div>

@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>JavaScript Tools</title>
     <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
     <script type="text/javascript" src="../js/Debug.js"></script>
@@ -39,7 +40,12 @@
 
                 <p>
                   I realise this is quite a long article, so
-                  <a href="#" onclick="Debug.ShowWindow(); return false;"
+                  <a
+                    href="#"
+                    onclick="
+                      Debug.ShowWindow();
+                      return false;
+                    "
                     >if you're too eager</a
                   >, just hit the back-tick key under escape. Evaluate 'window',
                   too. Just for fun ;-)

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -157,7 +157,9 @@
         background: #fff;
         color: #222;
         cursor: pointer;
-        font: 12px 'Courier New', monospace;
+        font:
+          12px "Courier New",
+          monospace;
       }
       .palette_colour span {
         display: block;
@@ -168,24 +170,35 @@
         padding: 0;
         border-bottom: 1px solid #aaa;
       }
-      @media (max-width: 1000px) {
-        #Layer0 { width: 100%; }
-        #Layer4 { padding: 0 20px; }
-        h1 img { max-width: 100%; height: auto; }
-      }
       @media (max-width: 620px) {
-        #harmony { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-        #hue_wheel { max-width: 360px; margin: auto; }
-        #panel_converter { height: auto; }
-        #panel_rgb, #panel_buttons, #panel_hex {
+        #harmony {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 20px;
+        }
+        #hue_wheel {
+          max-width: 360px;
+          margin: auto;
+        }
+        #panel_converter {
+          height: auto;
+        }
+        #panel_rgb,
+        #panel_buttons,
+        #panel_hex {
           float: none;
           width: 100%;
           height: auto;
           margin-bottom: 16px;
           text-align: left;
         }
-        input.text { max-width: 60%; box-sizing: border-box; }
-        #panel_blender_colours { display: grid; gap: 8px; }
+        input.text {
+          max-width: 60%;
+          box-sizing: border-box;
+        }
+        #panel_blender_colours {
+          display: grid;
+          gap: 8px;
+        }
       }
     </style>
     <script type="text/javascript">
@@ -252,15 +265,15 @@
           return {
             r: parseInt(
               colour_hex.substring(0, 1) + colour_hex.substring(0, 1),
-              16
+              16,
             ),
             g: parseInt(
               colour_hex.substring(1, 2) + colour_hex.substring(1, 2),
-              16
+              16,
             ),
             b: parseInt(
               colour_hex.substring(2, 3) + colour_hex.substring(2, 3),
-              16
+              16,
             ),
             hex: "#" + colour_hex,
           };
@@ -281,7 +294,7 @@
       function Blend() {
         var blend_steps = parseInt(
           document.getElementById("blend_steps").value,
-          10
+          10,
         );
         if (blend_steps < 2) blend_steps = 2;
         else if (blend_steps > 256) blend_steps = 256;
@@ -302,15 +315,15 @@
         for (i = 0; i < blend_steps; i++) {
           var r = parseInt(
             colour_from_rgb.r +
-              (colour_to_rgb.r - colour_from_rgb.r) * (i / (blend_steps - 1))
+              (colour_to_rgb.r - colour_from_rgb.r) * (i / (blend_steps - 1)),
           );
           var g = parseInt(
             colour_from_rgb.g +
-              (colour_to_rgb.g - colour_from_rgb.g) * (i / (blend_steps - 1))
+              (colour_to_rgb.g - colour_from_rgb.g) * (i / (blend_steps - 1)),
           );
           var b = parseInt(
             colour_from_rgb.b +
-              (colour_to_rgb.b - colour_from_rgb.b) * (i / (blend_steps - 1))
+              (colour_to_rgb.b - colour_from_rgb.b) * (i / (blend_steps - 1)),
           );
 
           colour_blend_hex =
@@ -355,29 +368,72 @@
 
               <h3>Colour Wheel</h3>
               <section id="harmony" aria-label="Colour harmony">
-                <canvas id="hue_wheel" width="360" height="360" tabindex="0"
-                  role="img" aria-label="Hue and saturation colour wheel">
+                <canvas
+                  id="hue_wheel"
+                  width="360"
+                  height="360"
+                  tabindex="0"
+                  role="img"
+                  aria-label="Hue and saturation colour wheel"
+                >
                   Hue and saturation colour wheel
                 </canvas>
                 <div class="harmony_controls">
                   <div class="harmony_field">
                     <label for="wheel_hue">Hue (&deg;)</label>
-                    <input id="wheel_hue" type="number" min="0" max="359.9" step="0.1" value="210" />
+                    <input
+                      id="wheel_hue"
+                      type="number"
+                      min="0"
+                      max="359.9"
+                      step="0.1"
+                      value="210"
+                    />
                   </div>
                   <div class="harmony_field">
                     <label for="wheel_saturation">Saturation (%)</label>
-                    <input id="wheel_saturation" type="number" min="0" max="100" step="0.1" value="75" />
+                    <input
+                      id="wheel_saturation"
+                      type="number"
+                      min="0"
+                      max="100"
+                      step="0.1"
+                      value="75"
+                    />
                   </div>
                   <div class="harmony_field">
                     <label for="luminance">Luminance (%)</label>
                     <div class="harmony_pair">
-                      <input id="luminance" type="range" min="0" max="100" step="0.1" value="50" title="HSL lightness" />
-                      <input id="luminance_value" type="number" min="0" max="100" step="0.1" value="50" aria-label="Luminance percentage (HSL lightness)" />
+                      <input
+                        id="luminance"
+                        type="range"
+                        min="0"
+                        max="100"
+                        step="0.1"
+                        value="50"
+                        title="HSL lightness"
+                      />
+                      <input
+                        id="luminance_value"
+                        type="number"
+                        min="0"
+                        max="100"
+                        step="0.1"
+                        value="50"
+                        aria-label="Luminance percentage (HSL lightness)"
+                      />
                     </div>
                   </div>
                   <div class="harmony_field">
                     <label for="harmony_count">Total colours</label>
-                    <input id="harmony_count" type="number" min="1" max="24" step="1" value="3" />
+                    <input
+                      id="harmony_count"
+                      type="number"
+                      min="1"
+                      max="24"
+                      step="1"
+                      value="3"
+                    />
                   </div>
                   <div class="harmony_field">
                     <label for="harmony_preset">Preset</label>
@@ -397,8 +453,23 @@
                   <div class="harmony_field">
                     <label for="harmony_angle">Angle (&deg;)</label>
                     <div class="harmony_pair">
-                      <input id="harmony_angle" type="range" min="0.1" max="180" step="0.1" value="30" />
-                      <input id="harmony_angle_value" type="number" min="0.1" max="180" step="0.1" value="30" aria-label="Angle in degrees" />
+                      <input
+                        id="harmony_angle"
+                        type="range"
+                        min="0.1"
+                        max="180"
+                        step="0.1"
+                        value="30"
+                      />
+                      <input
+                        id="harmony_angle_value"
+                        type="number"
+                        min="0.1"
+                        max="180"
+                        step="0.1"
+                        value="30"
+                        aria-label="Angle in degrees"
+                      />
                     </div>
                   </div>
                 </div>
@@ -434,12 +505,12 @@
                 <div id="panel_buttons">
                   <input
                     type="button"
-                    onclick="rgbToHex();"
+                    onclick="rgbToHex()"
                     value="Convert to Hex &gt;&gt;"
                   /><br />
                   <input
                     type="button"
-                    onclick="hexToRGB();"
+                    onclick="hexToRGB()"
                     value="&lt;&lt; Convert to RGB"
                   />
                 </div>
@@ -480,7 +551,7 @@
                   id="blend_steps"
                   value="16"
                 />
-                <input type="button" value="Blend!" onclick="Blend();" />
+                <input type="button" value="Blend!" onclick="Blend()" />
               </div>
               <div id="blend"></div>
               <br />
@@ -552,7 +623,14 @@
         var wheel = document.createElement("canvas");
         wheel.width = wheel.height = 360;
         var wheelContext = wheel.getContext("2d");
-        var state = { hue: 210, saturation: 75, lightness: 50, count: 3, angle: 30, spacing: "custom" };
+        var state = {
+          hue: 210,
+          saturation: 75,
+          lightness: 50,
+          count: 3,
+          angle: 30,
+          spacing: "custom",
+        };
         var renderedLightness = -1;
         var activePointer = null;
         var centre = 180;
@@ -567,28 +645,45 @@
         }
 
         function hslToRgb(hue, saturation, lightness) {
-          var chroma = (1 - Math.abs(2 * lightness / 100 - 1)) * saturation / 100;
+          var chroma =
+            ((1 - Math.abs((2 * lightness) / 100 - 1)) * saturation) / 100;
           var sector = normaliseHue(hue) / 60;
-          var secondary = chroma * (1 - Math.abs(sector % 2 - 1));
+          var secondary = chroma * (1 - Math.abs((sector % 2) - 1));
           var match = lightness / 100 - chroma / 2;
-          var channels = sector < 1 ? [chroma, secondary, 0] :
-            sector < 2 ? [secondary, chroma, 0] :
-            sector < 3 ? [0, chroma, secondary] :
-            sector < 4 ? [0, secondary, chroma] :
-            sector < 5 ? [secondary, 0, chroma] : [chroma, 0, secondary];
-          return channels.map(function (channel) { return Math.round((channel + match) * 255); });
+          var channels =
+            sector < 1
+              ? [chroma, secondary, 0]
+              : sector < 2
+                ? [secondary, chroma, 0]
+                : sector < 3
+                  ? [0, chroma, secondary]
+                  : sector < 4
+                    ? [0, secondary, chroma]
+                    : sector < 5
+                      ? [secondary, 0, chroma]
+                      : [chroma, 0, secondary];
+          return channels.map(function (channel) {
+            return Math.round((channel + match) * 255);
+          });
         }
 
         function hexAt(hue) {
-          return "#" + hslToRgb(hue, state.saturation, state.lightness).map(function (channel) {
-            return channel.toString(16).padStart(2, "0");
-          }).join("").toUpperCase();
+          return (
+            "#" +
+            hslToRgb(hue, state.saturation, state.lightness)
+              .map(function (channel) {
+                return channel.toString(16).padStart(2, "0");
+              })
+              .join("")
+              .toUpperCase()
+          );
         }
 
         function offsets() {
           var result = [0];
           if (state.spacing === "even") {
-            for (var index = 1; index < state.count; index++) result.push(index * 360 / state.count);
+            for (var index = 1; index < state.count; index++)
+              result.push((index * 360) / state.count);
           } else {
             for (var pair = 1; pair <= (state.count - 1) / 2; pair++) {
               result.push(-pair * state.angle, pair * state.angle);
@@ -606,8 +701,12 @@
                 var vertical = row + 0.5 - centre;
                 var distance = Math.hypot(horizontal, vertical);
                 if (distance > radius) continue;
-                var hue = Math.atan2(vertical, horizontal) * 180 / Math.PI;
-                var rgb = hslToRgb(hue, distance / radius * 100, state.lightness);
+                var hue = (Math.atan2(vertical, horizontal) * 180) / Math.PI;
+                var rgb = hslToRgb(
+                  hue,
+                  (distance / radius) * 100,
+                  state.lightness,
+                );
                 var pixel = (row * 360 + column) * 4;
                 image.data[pixel] = rgb[0];
                 image.data[pixel + 1] = rgb[1];
@@ -621,32 +720,43 @@
           context.clearRect(0, 0, 360, 360);
           context.drawImage(wheel, 0, 0);
           var nodes = offsets();
-          nodes.slice(1).concat([0]).forEach(function (offset) {
-            var radians = (state.hue + offset) * Math.PI / 180;
-            var horizontal = centre + Math.cos(radians) * radius * state.saturation / 100;
-            var vertical = centre + Math.sin(radians) * radius * state.saturation / 100;
-            context.beginPath();
-            context.arc(horizontal, vertical, offset === 0 ? 11 : 6, 0, Math.PI * 2);
-            context.strokeStyle = "#000";
-            context.lineWidth = 4;
-            context.stroke();
-            context.strokeStyle = "#fff";
-            context.lineWidth = 2;
-            context.stroke();
-            if (offset === 0) {
+          nodes
+            .slice(1)
+            .concat([0])
+            .forEach(function (offset) {
+              var radians = ((state.hue + offset) * Math.PI) / 180;
+              var horizontal =
+                centre + (Math.cos(radians) * radius * state.saturation) / 100;
+              var vertical =
+                centre + (Math.sin(radians) * radius * state.saturation) / 100;
               context.beginPath();
-              context.moveTo(horizontal - 15, vertical);
-              context.lineTo(horizontal - 8, vertical);
-              context.moveTo(horizontal + 8, vertical);
-              context.lineTo(horizontal + 15, vertical);
-              context.moveTo(horizontal, vertical - 15);
-              context.lineTo(horizontal, vertical - 8);
-              context.moveTo(horizontal, vertical + 8);
-              context.lineTo(horizontal, vertical + 15);
+              context.arc(
+                horizontal,
+                vertical,
+                offset === 0 ? 11 : 6,
+                0,
+                Math.PI * 2,
+              );
               context.strokeStyle = "#000";
+              context.lineWidth = 4;
               context.stroke();
-            }
-          });
+              context.strokeStyle = "#fff";
+              context.lineWidth = 2;
+              context.stroke();
+              if (offset === 0) {
+                context.beginPath();
+                context.moveTo(horizontal - 15, vertical);
+                context.lineTo(horizontal - 8, vertical);
+                context.moveTo(horizontal + 8, vertical);
+                context.lineTo(horizontal + 15, vertical);
+                context.moveTo(horizontal, vertical - 15);
+                context.lineTo(horizontal, vertical - 8);
+                context.moveTo(horizontal, vertical + 8);
+                context.lineTo(horizontal, vertical + 15);
+                context.strokeStyle = "#000";
+                context.stroke();
+              }
+            });
         }
 
         function preview(hex) {
@@ -664,17 +774,32 @@
           field("harmony_spacing").options[1].disabled = !customAllowed;
           field("harmony_spacing").disabled = state.count === 1;
           field("harmony_spacing").value = state.spacing;
-          field("harmony_angle").disabled = field("harmony_angle_value").disabled = state.spacing !== "custom";
+          field("harmony_angle").disabled = field(
+            "harmony_angle_value",
+          ).disabled = state.spacing !== "custom";
           setValue("wheel_hue", state.hue.toFixed(1));
           setValue("wheel_saturation", state.saturation.toFixed(1));
           setValue("luminance", state.lightness);
           setValue("luminance_value", state.lightness);
           setValue("harmony_count", state.count);
-          var angle = state.spacing === "even" ? 360 / state.count : state.angle;
+          var angle =
+            state.spacing === "even" ? 360 / state.count : state.angle;
           setValue("harmony_angle", angle);
           setValue("harmony_angle_value", Math.round(angle * 10) / 10);
-          field("luminance").style.background = "linear-gradient(to right, #000, hsl(" + state.hue + ", " + state.saturation + "%, 50%), #fff)";
-          canvas.setAttribute("aria-label", "Colour wheel: hue " + state.hue.toFixed(1) + " degrees, saturation " + state.saturation.toFixed(1) + " percent");
+          field("luminance").style.background =
+            "linear-gradient(to right, #000, hsl(" +
+            state.hue +
+            ", " +
+            state.saturation +
+            "%, 50%), #fff)";
+          canvas.setAttribute(
+            "aria-label",
+            "Colour wheel: hue " +
+              state.hue.toFixed(1) +
+              " degrees, saturation " +
+              state.saturation.toFixed(1) +
+              " percent",
+          );
           drawWheel();
           var palette = field("harmony_palette");
           var buttons = Array.from(palette.children);
@@ -691,23 +816,36 @@
               button.appendChild(swatch);
               button.appendChild(document.createElement("span"));
               button.appendChild(document.createElement("span"));
-              button.addEventListener("click", function () { preview(this.dataset.hex); });
+              button.addEventListener("click", function () {
+                preview(this.dataset.hex);
+              });
               palette.appendChild(button);
             }
             button.dataset.hex = hex;
             button.title = "Use " + hex + " in the colour converter";
             button.children[0].style.backgroundColor = hex;
-            button.children[1].textContent = index === 0 ? "Primary" : (offset > 0 ? "+" : "") + Math.round(offset * 10) / 10 + "\u00b0";
+            button.children[1].textContent =
+              index === 0
+                ? "Primary"
+                : (offset > 0 ? "+" : "") +
+                  Math.round(offset * 10) / 10 +
+                  "\u00b0";
             button.children[2].textContent = hex;
           });
-          buttons.slice(nodes.length).forEach(function (button) { button.remove(); });
+          buttons.slice(nodes.length).forEach(function (button) {
+            button.remove();
+          });
           preview(hexAt(state.hue));
         }
 
         function bindNumber(id, property, minimum, maximum, manual) {
           field(id).addEventListener("input", function () {
-            if (this.value === "" || !Number.isFinite(this.valueAsNumber)) return;
-            state[property] = Math.max(minimum, Math.min(maximum, this.valueAsNumber));
+            if (this.value === "" || !Number.isFinite(this.valueAsNumber))
+              return;
+            state[property] = Math.max(
+              minimum,
+              Math.min(maximum, this.valueAsNumber),
+            );
             if (property === "count") state.count = Math.round(state.count);
             if (manual) field("harmony_preset").value = "manual";
             render();
@@ -741,19 +879,29 @@
 
         function choosePoint(event) {
           var bounds = canvas.getBoundingClientRect();
-          var horizontal = (event.clientX - bounds.left) * 360 / bounds.width - centre;
-          var vertical = (event.clientY - bounds.top) * 360 / bounds.height - centre;
+          var horizontal =
+            ((event.clientX - bounds.left) * 360) / bounds.width - centre;
+          var vertical =
+            ((event.clientY - bounds.top) * 360) / bounds.height - centre;
           var distance = Math.hypot(horizontal, vertical);
-          if (distance > 0.5) state.hue = normaliseHue(Math.atan2(vertical, horizontal) * 180 / Math.PI);
-          state.saturation = Math.min(100, distance / radius * 100);
+          if (distance > 0.5)
+            state.hue = normaliseHue(
+              (Math.atan2(vertical, horizontal) * 180) / Math.PI,
+            );
+          state.saturation = Math.min(100, (distance / radius) * 100);
           render();
         }
 
         canvas.addEventListener("pointerdown", function (event) {
           if (event.button !== 0 || activePointer !== null) return;
           var bounds = canvas.getBoundingClientRect();
-          if (Math.hypot((event.clientX - bounds.left) * 360 / bounds.width - centre,
-            (event.clientY - bounds.top) * 360 / bounds.height - centre) > radius) return;
+          if (
+            Math.hypot(
+              ((event.clientX - bounds.left) * 360) / bounds.width - centre,
+              ((event.clientY - bounds.top) * 360) / bounds.height - centre,
+            ) > radius
+          )
+            return;
           activePointer = event.pointerId;
           canvas.setPointerCapture(event.pointerId);
           canvas.focus({ preventScroll: true });
@@ -762,17 +910,23 @@
         canvas.addEventListener("pointermove", function (event) {
           if (activePointer === event.pointerId) choosePoint(event);
         });
-        ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (name) {
-          canvas.addEventListener(name, function (event) {
-            if (activePointer === event.pointerId) activePointer = null;
-          });
-        });
+        ["pointerup", "pointercancel", "lostpointercapture"].forEach(
+          function (name) {
+            canvas.addEventListener(name, function (event) {
+              if (activePointer === event.pointerId) activePointer = null;
+            });
+          },
+        );
         canvas.addEventListener("keydown", function (event) {
           var step = event.shiftKey ? 10 : 1;
-          if (event.key === "ArrowLeft") state.hue = normaliseHue(state.hue - step);
-          else if (event.key === "ArrowRight") state.hue = normaliseHue(state.hue + step);
-          else if (event.key === "ArrowUp") state.saturation = Math.min(100, state.saturation + step);
-          else if (event.key === "ArrowDown") state.saturation = Math.max(0, state.saturation - step);
+          if (event.key === "ArrowLeft")
+            state.hue = normaliseHue(state.hue - step);
+          else if (event.key === "ArrowRight")
+            state.hue = normaliseHue(state.hue + step);
+          else if (event.key === "ArrowUp")
+            state.saturation = Math.min(100, state.saturation + step);
+          else if (event.key === "ArrowDown")
+            state.saturation = Math.max(0, state.saturation - step);
           else return;
           event.preventDefault();
           render();

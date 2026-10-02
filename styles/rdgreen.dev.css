@@ -135,6 +135,52 @@ dd {
   vertical-align: middle;
 }
 
+@media (max-width: 1000px) {
+  #Layer0 {
+    width: 100%;
+  }
+
+  #Layer4 {
+    padding: 0 20px;
+  }
+
+  h1 img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  body,
+  #Layer0,
+  #Footer0 {
+    background: #eee;
+  }
+
+  #Layer1,
+  #Layer2,
+  #Layer3,
+  #Layer4,
+  #Footer1,
+  #Footer2 {
+    background: none;
+  }
+
+  #Layer4 {
+    padding: 0 12px;
+  }
+
+  #Footer2 {
+    height: auto;
+    min-height: 92px;
+  }
+
+  #Footer2 p {
+    margin: 0 12px;
+    padding-bottom: 20px;
+  }
+}
+
 #frameData {
   background-color: black;
   color: #0f0;

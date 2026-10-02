@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AsciiArt Animation Generator</title>
     <style type="text/css">
       input.button {
@@ -84,7 +85,7 @@
         }
         var newFrameDelay = parseInt(
           document.getElementById("txtDefaultFrameDelay").value,
-          10
+          10,
         );
         if (crntFrame == frames.length - 1) {
           frames.push(newFrameData);
@@ -158,7 +159,7 @@
         addEvent(
           document.getElementById("btnFirst"),
           "click",
-          btnFirst_OnClick
+          btnFirst_OnClick,
         );
         addEvent(document.getElementById("btnPrev"), "click", btnPrev_OnClick);
         addEvent(document.getElementById("btnNext"), "click", btnNext_OnClick);
@@ -199,7 +200,7 @@
         // Create the first frame
         frames.push("");
         frameDelays.push(
-          parseInt(document.getElementById("txtDefaultFrameDelay").value, 10)
+          parseInt(document.getElementById("txtDefaultFrameDelay").value, 10),
         );
         drawFrames();
       }
