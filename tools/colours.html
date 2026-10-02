@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>JavaScript Tools - Colours</title>
     <link rel="stylesheet" type="text/css" href="../styles/rdgreen.dev.css" />
     <style type="text/css">
@@ -63,6 +64,128 @@
         padding: 2px;
         font-size: 1.2em;
         text-align: left;
+      }
+      #harmony {
+        display: grid;
+        grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+        gap: 28px;
+        align-items: center;
+      }
+      #hue_wheel {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+        touch-action: none;
+        cursor: crosshair;
+      }
+      #hue_wheel:focus-visible,
+      .palette_colour:focus-visible {
+        outline: 2px solid #1f7ca6;
+        outline-offset: 4px;
+      }
+      .harmony_controls {
+        display: grid;
+        gap: 16px;
+        font-size: 12px;
+      }
+      .harmony_controls label {
+        font: inherit;
+      }
+      .harmony_field {
+        display: grid;
+        grid-template-columns: 110px minmax(0, 1fr);
+        align-items: center;
+        gap: 12px;
+      }
+      .harmony_controls input,
+      .harmony_controls select {
+        box-sizing: border-box;
+        min-width: 0;
+        width: 100%;
+        font: inherit;
+      }
+      .harmony_controls input[type="number"],
+      .harmony_controls select {
+        padding: 6px;
+      }
+      .harmony_pair {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 70px;
+        align-items: center;
+        gap: 12px;
+      }
+      #luminance {
+        appearance: none;
+        height: 20px;
+        margin: 0;
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      #luminance::-moz-range-track,
+      #luminance::-moz-range-progress {
+        background: transparent;
+      }
+      #luminance::-moz-range-thumb {
+        width: 10px;
+        height: 24px;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        background: #333;
+        box-shadow: 0 0 0 1px #333;
+      }
+      #luminance::-webkit-slider-thumb {
+        appearance: none;
+        width: 14px;
+        height: 28px;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        background: #333;
+        box-shadow: 0 0 0 1px #333;
+      }
+      #harmony_palette {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .palette_colour {
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        background: #fff;
+        color: #222;
+        cursor: pointer;
+        font: 12px 'Courier New', monospace;
+      }
+      .palette_colour span {
+        display: block;
+        padding: 6px;
+      }
+      .palette_colour .swatch {
+        height: 44px;
+        padding: 0;
+        border-bottom: 1px solid #aaa;
+      }
+      @media (max-width: 1000px) {
+        #Layer0 { width: 100%; }
+        #Layer4 { padding: 0 20px; }
+        h1 img { max-width: 100%; height: auto; }
+      }
+      @media (max-width: 620px) {
+        #harmony { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+        #hue_wheel { max-width: 360px; margin: auto; }
+        #panel_converter { height: auto; }
+        #panel_rgb, #panel_buttons, #panel_hex {
+          float: none;
+          width: 100%;
+          height: auto;
+          margin-bottom: 16px;
+          text-align: left;
+        }
+        input.text { max-width: 60%; box-sizing: border-box; }
+        #panel_blender_colours { display: grid; gap: 8px; }
       }
     </style>
     <script type="text/javascript">
@@ -230,6 +353,58 @@
 
               <h2><a href="./">JavaScript Tools</a> - Colours</h2>
 
+              <h3>Colour Wheel</h3>
+              <section id="harmony" aria-label="Colour harmony">
+                <canvas id="hue_wheel" width="360" height="360" tabindex="0"
+                  role="img" aria-label="Hue and saturation colour wheel">
+                  Hue and saturation colour wheel
+                </canvas>
+                <div class="harmony_controls">
+                  <div class="harmony_field">
+                    <label for="wheel_hue">Hue (&deg;)</label>
+                    <input id="wheel_hue" type="number" min="0" max="359.9" step="0.1" value="210" />
+                  </div>
+                  <div class="harmony_field">
+                    <label for="wheel_saturation">Saturation (%)</label>
+                    <input id="wheel_saturation" type="number" min="0" max="100" step="0.1" value="75" />
+                  </div>
+                  <div class="harmony_field">
+                    <label for="luminance">Luminance (%)</label>
+                    <div class="harmony_pair">
+                      <input id="luminance" type="range" min="0" max="100" step="0.1" value="50" title="HSL lightness" />
+                      <input id="luminance_value" type="number" min="0" max="100" step="0.1" value="50" aria-label="Luminance percentage (HSL lightness)" />
+                    </div>
+                  </div>
+                  <div class="harmony_field">
+                    <label for="harmony_count">Total colours</label>
+                    <input id="harmony_count" type="number" min="1" max="24" step="1" value="3" />
+                  </div>
+                  <div class="harmony_field">
+                    <label for="harmony_preset">Preset</label>
+                    <select id="harmony_preset">
+                      <option value="manual">Manual</option>
+                      <option value="analogous" selected>Analogous</option>
+                      <option value="triadic">Triadic</option>
+                    </select>
+                  </div>
+                  <div class="harmony_field">
+                    <label for="harmony_spacing">Spacing</label>
+                    <select id="harmony_spacing">
+                      <option value="even">Evenly spaced</option>
+                      <option value="custom" selected>Custom angle</option>
+                    </select>
+                  </div>
+                  <div class="harmony_field">
+                    <label for="harmony_angle">Angle (&deg;)</label>
+                    <div class="harmony_pair">
+                      <input id="harmony_angle" type="range" min="0.1" max="180" step="0.1" value="30" />
+                      <input id="harmony_angle_value" type="number" min="0.1" max="180" step="0.1" value="30" aria-label="Angle in degrees" />
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <div id="harmony_palette" aria-label="Harmony colours"></div>
+
               <h3>Colour Converter</h3>
 
               <div id="panel_converter">
@@ -370,5 +545,240 @@
 
     <script type="text/javascript" src="../js/Debug.js"></script>
     <script type="text/javascript" src="../js/Hex.js?v=3"></script>
+    <script type="text/javascript">
+      (function () {
+        var canvas = document.getElementById("hue_wheel");
+        var context = canvas.getContext("2d");
+        var wheel = document.createElement("canvas");
+        wheel.width = wheel.height = 360;
+        var wheelContext = wheel.getContext("2d");
+        var state = { hue: 210, saturation: 75, lightness: 50, count: 3, angle: 30, spacing: "custom" };
+        var renderedLightness = -1;
+        var activePointer = null;
+        var centre = 180;
+        var radius = 164;
+
+        function field(id) {
+          return document.getElementById(id);
+        }
+
+        function normaliseHue(hue) {
+          return ((hue % 360) + 360) % 360;
+        }
+
+        function hslToRgb(hue, saturation, lightness) {
+          var chroma = (1 - Math.abs(2 * lightness / 100 - 1)) * saturation / 100;
+          var sector = normaliseHue(hue) / 60;
+          var secondary = chroma * (1 - Math.abs(sector % 2 - 1));
+          var match = lightness / 100 - chroma / 2;
+          var channels = sector < 1 ? [chroma, secondary, 0] :
+            sector < 2 ? [secondary, chroma, 0] :
+            sector < 3 ? [0, chroma, secondary] :
+            sector < 4 ? [0, secondary, chroma] :
+            sector < 5 ? [secondary, 0, chroma] : [chroma, 0, secondary];
+          return channels.map(function (channel) { return Math.round((channel + match) * 255); });
+        }
+
+        function hexAt(hue) {
+          return "#" + hslToRgb(hue, state.saturation, state.lightness).map(function (channel) {
+            return channel.toString(16).padStart(2, "0");
+          }).join("").toUpperCase();
+        }
+
+        function offsets() {
+          var result = [0];
+          if (state.spacing === "even") {
+            for (var index = 1; index < state.count; index++) result.push(index * 360 / state.count);
+          } else {
+            for (var pair = 1; pair <= (state.count - 1) / 2; pair++) {
+              result.push(-pair * state.angle, pair * state.angle);
+            }
+          }
+          return result;
+        }
+
+        function drawWheel() {
+          if (renderedLightness !== state.lightness) {
+            var image = wheelContext.createImageData(360, 360);
+            for (var row = 0; row < 360; row++) {
+              for (var column = 0; column < 360; column++) {
+                var horizontal = column + 0.5 - centre;
+                var vertical = row + 0.5 - centre;
+                var distance = Math.hypot(horizontal, vertical);
+                if (distance > radius) continue;
+                var hue = Math.atan2(vertical, horizontal) * 180 / Math.PI;
+                var rgb = hslToRgb(hue, distance / radius * 100, state.lightness);
+                var pixel = (row * 360 + column) * 4;
+                image.data[pixel] = rgb[0];
+                image.data[pixel + 1] = rgb[1];
+                image.data[pixel + 2] = rgb[2];
+                image.data[pixel + 3] = Math.min(1, radius - distance) * 255;
+              }
+            }
+            wheelContext.putImageData(image, 0, 0);
+            renderedLightness = state.lightness;
+          }
+          context.clearRect(0, 0, 360, 360);
+          context.drawImage(wheel, 0, 0);
+          var nodes = offsets();
+          nodes.slice(1).concat([0]).forEach(function (offset) {
+            var radians = (state.hue + offset) * Math.PI / 180;
+            var horizontal = centre + Math.cos(radians) * radius * state.saturation / 100;
+            var vertical = centre + Math.sin(radians) * radius * state.saturation / 100;
+            context.beginPath();
+            context.arc(horizontal, vertical, offset === 0 ? 11 : 6, 0, Math.PI * 2);
+            context.strokeStyle = "#000";
+            context.lineWidth = 4;
+            context.stroke();
+            context.strokeStyle = "#fff";
+            context.lineWidth = 2;
+            context.stroke();
+            if (offset === 0) {
+              context.beginPath();
+              context.moveTo(horizontal - 15, vertical);
+              context.lineTo(horizontal - 8, vertical);
+              context.moveTo(horizontal + 8, vertical);
+              context.lineTo(horizontal + 15, vertical);
+              context.moveTo(horizontal, vertical - 15);
+              context.lineTo(horizontal, vertical - 8);
+              context.moveTo(horizontal, vertical + 8);
+              context.lineTo(horizontal, vertical + 15);
+              context.strokeStyle = "#000";
+              context.stroke();
+            }
+          });
+        }
+
+        function preview(hex) {
+          field("colour_hex").value = hex.substring(1);
+          hexToRGB();
+        }
+
+        function setValue(id, value) {
+          if (document.activeElement !== field(id)) field(id).value = value;
+        }
+
+        function render() {
+          var customAllowed = state.count > 1 && state.count % 2 === 1;
+          if (!customAllowed) state.spacing = "even";
+          field("harmony_spacing").options[1].disabled = !customAllowed;
+          field("harmony_spacing").disabled = state.count === 1;
+          field("harmony_spacing").value = state.spacing;
+          field("harmony_angle").disabled = field("harmony_angle_value").disabled = state.spacing !== "custom";
+          setValue("wheel_hue", state.hue.toFixed(1));
+          setValue("wheel_saturation", state.saturation.toFixed(1));
+          setValue("luminance", state.lightness);
+          setValue("luminance_value", state.lightness);
+          setValue("harmony_count", state.count);
+          var angle = state.spacing === "even" ? 360 / state.count : state.angle;
+          setValue("harmony_angle", angle);
+          setValue("harmony_angle_value", Math.round(angle * 10) / 10);
+          field("luminance").style.background = "linear-gradient(to right, #000, hsl(" + state.hue + ", " + state.saturation + "%, 50%), #fff)";
+          canvas.setAttribute("aria-label", "Colour wheel: hue " + state.hue.toFixed(1) + " degrees, saturation " + state.saturation.toFixed(1) + " percent");
+          drawWheel();
+          var palette = field("harmony_palette");
+          var buttons = Array.from(palette.children);
+          var nodes = offsets();
+          nodes.forEach(function (offset, index) {
+            var hex = hexAt(state.hue + offset);
+            var button = buttons[index];
+            if (!button) {
+              button = document.createElement("button");
+              button.type = "button";
+              button.className = "palette_colour";
+              var swatch = document.createElement("span");
+              swatch.className = "swatch";
+              button.appendChild(swatch);
+              button.appendChild(document.createElement("span"));
+              button.appendChild(document.createElement("span"));
+              button.addEventListener("click", function () { preview(this.dataset.hex); });
+              palette.appendChild(button);
+            }
+            button.dataset.hex = hex;
+            button.title = "Use " + hex + " in the colour converter";
+            button.children[0].style.backgroundColor = hex;
+            button.children[1].textContent = index === 0 ? "Primary" : (offset > 0 ? "+" : "") + Math.round(offset * 10) / 10 + "\u00b0";
+            button.children[2].textContent = hex;
+          });
+          buttons.slice(nodes.length).forEach(function (button) { button.remove(); });
+          preview(hexAt(state.hue));
+        }
+
+        function bindNumber(id, property, minimum, maximum, manual) {
+          field(id).addEventListener("input", function () {
+            if (this.value === "" || !Number.isFinite(this.valueAsNumber)) return;
+            state[property] = Math.max(minimum, Math.min(maximum, this.valueAsNumber));
+            if (property === "count") state.count = Math.round(state.count);
+            if (manual) field("harmony_preset").value = "manual";
+            render();
+          });
+          field(id).addEventListener("change", function () {
+            this.value = state[property];
+            render();
+          });
+        }
+
+        bindNumber("wheel_hue", "hue", 0, 359.9);
+        bindNumber("wheel_saturation", "saturation", 0, 100);
+        bindNumber("luminance", "lightness", 0, 100);
+        bindNumber("luminance_value", "lightness", 0, 100);
+        bindNumber("harmony_count", "count", 1, 24, true);
+        bindNumber("harmony_angle", "angle", 0.1, 180, true);
+        bindNumber("harmony_angle_value", "angle", 0.1, 180, true);
+        field("harmony_spacing").addEventListener("change", function () {
+          state.spacing = this.value;
+          field("harmony_preset").value = "manual";
+          render();
+        });
+        field("harmony_preset").addEventListener("change", function () {
+          if (this.value !== "manual") {
+            state.count = 3;
+            state.spacing = "custom";
+            state.angle = this.value === "analogous" ? 30 : 120;
+          }
+          render();
+        });
+
+        function choosePoint(event) {
+          var bounds = canvas.getBoundingClientRect();
+          var horizontal = (event.clientX - bounds.left) * 360 / bounds.width - centre;
+          var vertical = (event.clientY - bounds.top) * 360 / bounds.height - centre;
+          var distance = Math.hypot(horizontal, vertical);
+          if (distance > 0.5) state.hue = normaliseHue(Math.atan2(vertical, horizontal) * 180 / Math.PI);
+          state.saturation = Math.min(100, distance / radius * 100);
+          render();
+        }
+
+        canvas.addEventListener("pointerdown", function (event) {
+          if (event.button !== 0 || activePointer !== null) return;
+          var bounds = canvas.getBoundingClientRect();
+          if (Math.hypot((event.clientX - bounds.left) * 360 / bounds.width - centre,
+            (event.clientY - bounds.top) * 360 / bounds.height - centre) > radius) return;
+          activePointer = event.pointerId;
+          canvas.setPointerCapture(event.pointerId);
+          canvas.focus({ preventScroll: true });
+          choosePoint(event);
+        });
+        canvas.addEventListener("pointermove", function (event) {
+          if (activePointer === event.pointerId) choosePoint(event);
+        });
+        ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (name) {
+          canvas.addEventListener(name, function (event) {
+            if (activePointer === event.pointerId) activePointer = null;
+          });
+        });
+        canvas.addEventListener("keydown", function (event) {
+          var step = event.shiftKey ? 10 : 1;
+          if (event.key === "ArrowLeft") state.hue = normaliseHue(state.hue - step);
+          else if (event.key === "ArrowRight") state.hue = normaliseHue(state.hue + step);
+          else if (event.key === "ArrowUp") state.saturation = Math.min(100, state.saturation + step);
+          else if (event.key === "ArrowDown") state.saturation = Math.max(0, state.saturation - step);
+          else return;
+          event.preventDefault();
+          render();
+        });
+        render();
+      })();
+    </script>
   </body>
 </html>
